@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" TestRunTimeLimit="3" >
+	<Applications>
+		<!-- Win -->
+		<Application
+			Name="SBD.GL.Win"
+			FileName="[WinAppBin]\SBD.GL.Win.exe"
+			AdapterAssemblyName="[WinAdapterAssemblyName]"
+			CommunicationPort="4100"/>
+	</Applications>
+	<TestDatabases>
+		<Database xsi:type="TestMSSQLDatabase" Server="(localdb)\mssqllocaldb" DBName="SBD.GLEasyTest"/>
+	</TestDatabases>
+
+	<Aliases>
+		<Alias Name="DomainUserName" Value="%USERDOMAIN%\%USERNAME%" />
+		<Alias Name="WinAdapterAssemblyName" Value="DevExpress.ExpressApp.EasyTest.WinAdapter.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+		<Alias Name="WinAppBin" Value="[ConfigPath]\..\..\SBD.GL.Win\Bin\EasyTest" />
+	</Aliases>
+</Options>
