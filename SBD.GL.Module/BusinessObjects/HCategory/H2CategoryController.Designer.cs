@@ -1,6 +1,6 @@
 ﻿namespace SBD.GL.Module.BusinessObjects.HCategory
 {
-    partial class HCategoryController
+    partial class H2CategoryController
     {
         /// <summary>
         /// Required designer variable.

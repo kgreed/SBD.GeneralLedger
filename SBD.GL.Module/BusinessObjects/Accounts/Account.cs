@@ -59,17 +59,17 @@ namespace SBD.GL.Module.BusinessObjects
             set => Category = (int) value;
         }
 
-        //[Browsable(false)]
-        //[NotMapped]
-        //[RuleFromBoolProperty("ParentCategoryOk", DefaultContexts.Save, "Parent Category if present must match")]
-        //public bool ParentCategoryOk
-        //{
-        //    get
-        //    {
-        //        if (Parent == null) return true;
-        //        return Parent.Category == Category;
-        //    }
-        //}
+        [Browsable(false)]
+        [NotMapped]
+        [RuleFromBoolProperty("ParentCategoryOk", DefaultContexts.Save, "Parent Category if present must match")]
+        public bool ParentCategoryOk
+        {
+            get
+            {
+                if (Parent == null) return true;
+                return Parent.Category == Category;
+            }
+        }
 
         ITreeNode ITreeNode.Parent => Parent;
         string ITreeNode.Name => Code;

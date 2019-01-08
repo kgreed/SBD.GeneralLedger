@@ -17,11 +17,10 @@ using DevExpress.Persistent.Validation;
 
 namespace SBD.GL.Module.BusinessObjects.HCategory
 {
-    // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class HCategoryController : ViewController
+    public partial class H2CategoryController : ViewController
     {
         private NewObjectViewController controller;
-        public HCategoryController()
+        public H2CategoryController()
         {
             InitializeComponent();
             TargetObjectType = typeof(H2Category);
@@ -31,27 +30,30 @@ namespace SBD.GL.Module.BusinessObjects.HCategory
             controller = Frame.GetController<NewObjectViewController>();
             controller.ObjectCreated += controller_ObjectCreated;
             base.OnActivated();
-         
-            // Perform various tasks depending on the target View.
         }
         private void controller_ObjectCreated(object sender, ObjectCreatedEventArgs e)
         {
-            var view = ObjectSpace.Owner as View;
+            var createdObject = e.CreatedObject as H2Category;
 
-            if (!(view?.CurrentObject is H2Category parent)) return;
-            var child = e.CreatedObject as H2Category;
-            var os = e.ObjectSpace;
+           
+          //  var numModifiedObjects =createdObject.ObjectSpace.ModifiedObjects.Count;
 
-            //uncommenting this will cause the error
-            //child.Parent = os.GetObject(parent);
-            //parent.Children.Add(child);
+            var propertyCollectionSource = (View as ListView)?.CollectionSource as PropertyCollectionSource;
+            if (!(propertyCollectionSource?.MasterObject is H2Category master)) return;
+         
+            var m = e.ObjectSpace.GetObject(master);
+           
+            createdObject.Parent = m;
+            createdObject.Name = "t";
+            m.Children.Add(createdObject);
+     
+            Console.WriteLine(master.ID);
 
         }
         
         protected override void OnDeactivated()
         {
             controller.ObjectCreated += controller_ObjectCreated;
-            // Unsubscribe from previously subscribed events and release other references and resources.
             base.OnDeactivated();
         }
     }

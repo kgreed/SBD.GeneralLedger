@@ -112,11 +112,20 @@
     <Compile Include="BusinessObjects\Card.cs" />
     <Compile Include="BusinessObjects\GLCategory.cs" />
     <Compile Include="BusinessObjects\GLDbContext.cs" />
-    <Compile Include="BusinessObjects\HCategory\HCategoryController.cs">
+    <Compile Include="BusinessObjects\HCategory\H2CategoryController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\HCategory\HCategoryController.Designer.cs">
-      <DependentUpon>HCategoryController.cs</DependentUpon>
+    <Compile Include="BusinessObjects\HCategory\H2CategoryController.Designer.cs">
+      <DependentUpon>H2CategoryController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\HCategory\AccessParentDetailViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\HCategory\MasterDetailViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\HCategory\NestedListViewFrameController.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessObjects\Job.cs" />
     <Compile Include="BusinessObjects\Transaction.cs" />
@@ -126,7 +135,7 @@
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
-    <Compile Include="BusinessObjects\HCategory\HCategory.cs" />
+    <Compile Include="BusinessObjects\HCategory\H2Category.cs" />
     <Compile Include="Migrations\201901052212153_InitialCreate.cs" />
     <Compile Include="Migrations\201901052212153_InitialCreate.Designer.cs">
       <DependentUpon>201901052212153_InitialCreate.cs</DependentUpon>

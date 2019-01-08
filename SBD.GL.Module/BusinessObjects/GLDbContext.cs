@@ -16,6 +16,7 @@ namespace SBD.GL.Module.BusinessObjects
         public GLDbContext(String connectionString)
             : base(connectionString)
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public GLDbContext(DbConnection connection)
@@ -51,12 +52,10 @@ namespace SBD.GL.Module.BusinessObjects
                 .HasForeignKey(x => x.Parent_Id);
 
 
+            modelBuilder.Entity<H2Category>().HasMany(x => x.Children).WithOptional(x => x.Parent);
+           // Configuration.ProxyCreationEnabled = false;
 
             base.OnModelCreating(modelBuilder);
-
-            //modelBuilder.Entity<Account>()
-            //    .HasOptional<Account>(u => u.Parent) // EF'll load Parent if any     
-            //    .WithMany(u => u.Children);
 
         }
     }
