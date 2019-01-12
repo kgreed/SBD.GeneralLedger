@@ -43,6 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.EF.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -108,45 +109,100 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
+    <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
     <Compile Include="BusinessObjects\BasicBo.cs" />
     <Compile Include="BusinessObjects\Card.cs" />
     <Compile Include="BusinessObjects\GLCategory.cs" />
     <Compile Include="BusinessObjects\GLDbContext.cs" />
-    <Compile Include="BusinessObjects\HCategory\H2CategoryController.cs">
+    <Compile Include="BusinessObjects\GstCategory.cs" />
+    <Compile Include="BusinessObjects\Setting.cs" />
+    <Compile Include="BusinessObjects\TranHeader.cs" />
+    <Compile Include="Controllers\EntityObject1.cs" />
+    <Compile Include="Controllers\ICashBookItemController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\HCategory\H2CategoryController.Designer.cs">
-      <DependentUpon>H2CategoryController.cs</DependentUpon>
+    <Compile Include="Controllers\ICashBookItemController.Designer.cs">
+      <DependentUpon>ICashBookItemController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\HCategory\AccessParentDetailViewController.cs">
+    <Compile Include="Controllers\ICategoryController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\HCategory\MasterDetailViewController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BusinessObjects\HCategory\NestedListViewFrameController.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Controllers\ICategoryController.Designer.cs">
+      <DependentUpon>ICategoryController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Job.cs" />
     <Compile Include="BusinessObjects\Transaction.cs" />
-    <Compile Include="BusinessObjects\Accounts\AccountController.cs" />
-    <Compile Include="BusinessObjects\Accounts\AccountController.Designer.cs">
-      <DependentUpon>AccountController.cs</DependentUpon>
-    </Compile>
+    <Compile Include="HandyControllerFunctions.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
-    <Compile Include="BusinessObjects\HCategory\H2Category.cs" />
-    <Compile Include="Migrations\201901052212153_InitialCreate.cs" />
-    <Compile Include="Migrations\201901052212153_InitialCreate.Designer.cs">
-      <DependentUpon>201901052212153_InitialCreate.cs</DependentUpon>
+    <Compile Include="BusinessObjects\H2Category.cs" />
+    <Compile Include="Migrations\201901100044197_InitialCreate.cs" />
+    <Compile Include="Migrations\201901100044197_InitialCreate.Designer.cs">
+      <DependentUpon>201901100044197_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901060310417_two.cs" />
-    <Compile Include="Migrations\201901060310417_two.Designer.cs">
-      <DependentUpon>201901060310417_two.cs</DependentUpon>
+    <Compile Include="Migrations\201901100049255_one.cs" />
+    <Compile Include="Migrations\201901100049255_one.Designer.cs">
+      <DependentUpon>201901100049255_one.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901061546479_h2cat.cs" />
-    <Compile Include="Migrations\201901061546479_h2cat.Designer.cs">
-      <DependentUpon>201901061546479_h2cat.cs</DependentUpon>
+    <Compile Include="Migrations\201901100052094_two.cs" />
+    <Compile Include="Migrations\201901100052094_two.Designer.cs">
+      <DependentUpon>201901100052094_two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100054556_three.cs" />
+    <Compile Include="Migrations\201901100054556_three.Designer.cs">
+      <DependentUpon>201901100054556_three.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100059283_req.cs" />
+    <Compile Include="Migrations\201901100059283_req.Designer.cs">
+      <DependentUpon>201901100059283_req.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100101014_card.cs" />
+    <Compile Include="Migrations\201901100101014_card.Designer.cs">
+      <DependentUpon>201901100101014_card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100102321_date.cs" />
+    <Compile Include="Migrations\201901100102321_date.Designer.cs">
+      <DependentUpon>201901100102321_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100103446_three1.cs" />
+    <Compile Include="Migrations\201901100103446_three1.Designer.cs">
+      <DependentUpon>201901100103446_three1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100107092_ref.cs" />
+    <Compile Include="Migrations\201901100107092_ref.Designer.cs">
+      <DependentUpon>201901100107092_ref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100119300_child.cs" />
+    <Compile Include="Migrations\201901100119300_child.Designer.cs">
+      <DependentUpon>201901100119300_child.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100204562_tran.cs" />
+    <Compile Include="Migrations\201901100204562_tran.Designer.cs">
+      <DependentUpon>201901100204562_tran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100227207_ef.cs" />
+    <Compile Include="Migrations\201901100227207_ef.Designer.cs">
+      <DependentUpon>201901100227207_ef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100300410_test.cs" />
+    <Compile Include="Migrations\201901100300410_test.Designer.cs">
+      <DependentUpon>201901100300410_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100329142_account.cs" />
+    <Compile Include="Migrations\201901100329142_account.Designer.cs">
+      <DependentUpon>201901100329142_account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901112049475_bank.cs" />
+    <Compile Include="Migrations\201901112049475_bank.Designer.cs">
+      <DependentUpon>201901112049475_bank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901112052124_bank2.cs" />
+    <Compile Include="Migrations\201901112052124_bank2.Designer.cs">
+      <DependentUpon>201901112052124_bank2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901112133532_dets.cs" />
+    <Compile Include="Migrations\201901112133532_dets.Designer.cs">
+      <DependentUpon>201901112133532_dets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module.cs">
@@ -155,17 +211,60 @@
     <Compile Include="Module.Designer.cs">
       <DependentUpon>Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901052212153_InitialCreate.resx">
-      <DependentUpon>201901052212153_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901100044197_InitialCreate.resx">
+      <DependentUpon>201901100044197_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901060310417_two.resx">
-      <DependentUpon>201901060310417_two.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901100049255_one.resx">
+      <DependentUpon>201901100049255_one.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901061546479_h2cat.resx">
-      <DependentUpon>201901061546479_h2cat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901100052094_two.resx">
+      <DependentUpon>201901100052094_two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100054556_three.resx">
+      <DependentUpon>201901100054556_three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100059283_req.resx">
+      <DependentUpon>201901100059283_req.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100101014_card.resx">
+      <DependentUpon>201901100101014_card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100102321_date.resx">
+      <DependentUpon>201901100102321_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100103446_three1.resx">
+      <DependentUpon>201901100103446_three1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100107092_ref.resx">
+      <DependentUpon>201901100107092_ref.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100119300_child.resx">
+      <DependentUpon>201901100119300_child.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100204562_tran.resx">
+      <DependentUpon>201901100204562_tran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100227207_ef.resx">
+      <DependentUpon>201901100227207_ef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100300410_test.resx">
+      <DependentUpon>201901100300410_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100329142_account.resx">
+      <DependentUpon>201901100329142_account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901112049475_bank.resx">
+      <DependentUpon>201901112049475_bank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901112052124_bank2.resx">
+      <DependentUpon>201901112052124_bank2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901112133532_dets.resx">
+      <DependentUpon>201901112133532_dets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">

@@ -1,6 +1,6 @@
 ﻿namespace SBD.GL.Module.BusinessObjects
 {
-    public enum GLCategory
+    public enum GLCategoryEnum
     {
 
         Asset = 1,
@@ -10,7 +10,7 @@
         CostOfSales = 5,
         Expense = 6,
         OtherIncome = 7,
-        OtherAsset = 8
+        OtherExpense = 8
 
     }
 }

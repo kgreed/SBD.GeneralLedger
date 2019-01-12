@@ -14,6 +14,7 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using System.Data.Entity;
+using DevExpress.ExpressApp.ConditionalAppearance;
 using SBD.GL.Module.BusinessObjects;
 using DevExpress.ExpressApp.ReportsV2;
 
@@ -34,6 +35,9 @@ namespace SBD.GL.Module {
             InitializeComponent();
 			AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.EF.Analysis));
 			AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.EF.H2Category));
+
+           
+
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
@@ -47,6 +51,9 @@ namespace SBD.GL.Module {
             base.Setup(moduleManager);
 			ReportsModuleV2 reportModule = moduleManager.Modules.FindModule<ReportsModuleV2>();
             reportModule.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
-		}
+
+          
+
+        }
     }
 }

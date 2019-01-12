@@ -1,22 +1,2 @@
-﻿<?xml version="1.0" ?>
-<Application Title="SBD.GL">
-  <Options>
-    <LayoutManagerOptions RequiredFieldMark="*" />
-  </Options>
-  <Views>
-    <DetailView Id="ReportDataV2_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main" >
-          <LayoutGroup Id="SimpleEditors" >
-            <LayoutGroup Id="ReportDataV2" >
-              <LayoutItem Id="DisplayName" ViewItem="DisplayName" Index="0" IsNewNode="True" Removed="True" />
-              <LayoutItem Id="ParametersObjectType" ViewItem="ParametersObjectType" Index="1" IsNewNode="True" Removed="True" />
-              <LayoutItem Id="DataTypeCaption" ViewItem="DataTypeCaption" Index="2" IsNewNode="True" Removed="True" />
-              <LayoutItem Id="IsInplaceReport" Index="3" />
-            </LayoutGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
-  </Views>
-</Application>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application />
