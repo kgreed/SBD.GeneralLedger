@@ -48,7 +48,7 @@ namespace SBD.GL.Module.BusinessObjects
             base.OnSaving();
         }
 
-        [ModelDefault("AllowEdit", "false")]
+        [ModelDefault(ModelDefaultConstants.AllowEdit, "false")]
         public bool Header { get; set; }
         
 
@@ -143,5 +143,17 @@ namespace SBD.GL.Module.BusinessObjects
 
         [System.ComponentModel.DataAnnotations.Required]
         public virtual GstCategory GstCategory { get; set; }
+    }
+
+    public static class ModelDefaultConstants
+    {
+        public const  string AllowEdit = "AllowEdit";
+        public  const string IsFalse =  "false";
+        public const string IsTrue = "true";
+
+        public const string EditMask = "EditMask";
+        public const string DisplayFormat = "DisplayFormat";
+        public const string EditMaskGeneral = "g";
+        public const string DisplayFormatGeneral = "{0:g}";
     }
 }

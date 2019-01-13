@@ -16,7 +16,7 @@ namespace SBD.GL.Module.BusinessObjects
     [NavigationItem("01 Main")]
     [DefaultListViewOptions(true, NewItemRowPosition.Bottom)]
     [DefaultProperty("Summary")]
-    public class Transaction : BasicBo, IObjectSpaceLink, ICashbookLine //, INotifyPropertyChanged
+    public class Transaction : BasicBo, IObjectSpaceLink, ICashbookLine , INotifyPropertyChanged
     {
         [Browsable(false)]
         [Key] public int Id { get; set; }
@@ -70,7 +70,15 @@ namespace SBD.GL.Module.BusinessObjects
         [NotMapped]
         public Account HiddenAccount  // other side of the transaction = header linked account
         {
-            get => Amount > 0 ? CreditAccount : DebitAccount;
+            get
+            {
+                if (Amount > 0)
+                {
+                    return CreditAccount;
+                }
+
+                return DebitAccount;
+            } 
             set
             {
                 if (Amount > 0)
@@ -78,6 +86,7 @@ namespace SBD.GL.Module.BusinessObjects
                     CreditAccount = value;
                 }
                 DebitAccount = value;
+                OnPropertyChanged();
             }
         }
 
@@ -98,13 +107,13 @@ namespace SBD.GL.Module.BusinessObjects
         [RuleFromBoolProperty("AccountOk", DefaultContexts.Save, "Account must not be a header account")]
         public bool AccountOk => Account.Header == false;
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //[NotifyPropertyChangedInvocator]
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     // in a cash book there is an credit, debit and account column as vs the actual data structure of amount, debit account, credit account

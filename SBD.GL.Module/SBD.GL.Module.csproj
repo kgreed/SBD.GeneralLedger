@@ -117,6 +117,7 @@
     <Compile Include="BusinessObjects\GstCategory.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\TranHeader.cs" />
+    <Compile Include="Calculate.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
     <Compile Include="Controllers\ICashBookItemController.cs">
       <SubType>Component</SubType>
@@ -204,6 +205,10 @@
     <Compile Include="Migrations\201901112133532_dets.Designer.cs">
       <DependentUpon>201901112133532_dets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901122124488_tranheader.cs" />
+    <Compile Include="Migrations\201901122124488_tranheader.Designer.cs">
+      <DependentUpon>201901122124488_tranheader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -265,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901112133532_dets.resx">
       <DependentUpon>201901112133532_dets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901122124488_tranheader.resx">
+      <DependentUpon>201901122124488_tranheader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">

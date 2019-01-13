@@ -37,7 +37,7 @@ namespace SBD.GL.Module
 
                 db.SaveChanges();
 
-                return new List<Account>{account,child};
+                return new List<Account> {account, child};
 
                 // account.Children.Add(child);
             }
@@ -45,7 +45,7 @@ namespace SBD.GL.Module
 
         public static BindingList<Account> GetValidTransactionAccounts(IObjectSpace objectSpace)
         {
-             
+
             //var criteria = CriteriaOperator.Parse("[header] = ? ", false);
             var criteria = CriteriaOperator.Parse("[Id] > 0 ");
             var results = objectSpace.GetObjects<Account>(criteria);
@@ -74,7 +74,7 @@ namespace SBD.GL.Module
 
             using (var connect = new GLDbContext())
             {
-                var setting = new Setting { Name = settingName, Value = defaultValue };
+                var setting = new Setting {Name = settingName, Value = defaultValue};
                 connect.Settings.Add(setting);
                 connect.SaveChanges();
 
@@ -83,6 +83,7 @@ namespace SBD.GL.Module
                 {
                     throw new Exception("Expected setting to be found");
                 }
+
                 return newSetting;
             }
 
@@ -92,26 +93,68 @@ namespace SBD.GL.Module
         {
             var defaultCode = IsPandL ? "GST" : "N-T";
             var gstCode = GetOrMakeSetting(objectSpace, defaultCode, "GST");
-            
+
             var gstCategory = objectSpace.FindObject<GstCategory>(
                 CriteriaOperator.Parse("[Code]=?", gstCode));
             return gstCategory;
         }
 
-        //public static bool TryParseEnum<TEnum>(this int enumValue, out TEnum retVal)
-        //{
-        //    retVal = default(TEnum);
-        //    bool success = Enum.IsDefined(typeof(TEnum), enumValue);
-        //    if (success)
-        //    {
-        //        retVal = (TEnum)Enum.ToObject(typeof(TEnum), enumValue);
-        //    }
-        //    return success;
-        //}
 
         internal static bool IsValidEnum<T>(int category)
         {
             return Enum.IsDefined(typeof(T), category);
+        }
+
+        public static decimal GetOpeningBalance(TranHeader header)
+        {
+            using (var db = new GLDbContext())
+            {
+                try
+                {
+                    if (header.LinkedAccount == null) return 0;
+                    var credits = db.Transactions
+                        .Where(x => x.CreditAccount.Id == header.LinkedAccount.Id && x.TranHeader.StatementNumber < header.StatementNumber);
+                        
+                    var creditTotal    =  credits.Any() ? credits.Sum(y => y.Amount) :0;
+                    var debits = db.Transactions
+                        .Where(x => x.DebitAccount.Id == header.LinkedAccount.Id && x.TranHeader.StatementNumber < header.StatementNumber);
+                    var debitTotal = debits.Any() ? debits.Sum(y => y.Amount) : 0;
+                    return header.LinkedAccount.OpeningBalance + creditTotal - debitTotal;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+
+
+        public static decimal GetNextStatementNumber(Account linkedAccount)
+        {
+            using (var db = new GLDbContext())
+            {
+                try
+                {
+                    var lastStatement = db.TranHeaders.Where(x => x.LinkedAccount.Id == linkedAccount.Id)
+                  .OrderByDescending(x => x.StatementNumber).FirstOrDefault();
+
+
+                    if (lastStatement == null)
+                    {
+                        return 1;
+                    }
+
+                    return lastStatement.StatementNumber + 1;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+              
+            }
         }
     }
 }

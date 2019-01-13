@@ -21,20 +21,33 @@ namespace SBD.GL.Module.BusinessObjects
         public TranHeader()
         {
             Transactions = new List<Transaction>();
-            
-
         }
+
+        [ModelDefault(ModelDefaultConstants.EditMask, ModelDefaultConstants.EditMaskGeneral)]
+        [ModelDefault(ModelDefaultConstants.DisplayFormat,ModelDefaultConstants.DisplayFormatGeneral)]
+        public decimal StatementNumber { get; set; }  
+
         [System.ComponentModel.DataAnnotations.Required]
         public DateTime Date { get; set; }
         public virtual Card Card { get; set; }
 
         public override void OnCreated()
         {
-            Date = DateTime.Today;
+            if ( InstanceWideMemvars.Instance.EntryDate == null);
+            {
+                InstanceWideMemvars.Instance.EntryDate = DateTime.Now;
+            }
+            Date = InstanceWideMemvars.Instance.EntryDate;
+     
             base.OnCreated();
         }
 
-       
+        public override void OnSaving()
+        {
+            InstanceWideMemvars.Instance.EntryDate = Date;
+            base.OnSaving();
+        }
+        [Browsable(false)]
         [Key] public int Id { get; set; }
 
         [Browsable(false)]
@@ -47,11 +60,11 @@ namespace SBD.GL.Module.BusinessObjects
         public virtual  IList<Transaction> Transactions { get; set; }
 
        
-        public decimal TotalCredits => Transactions.Sum(x => x.CreditAmount);
-        public decimal TotalDebits => Transactions.Sum(x => x.DebitAmount);
 
+    
         private Account _linkedAccount;
-        //[ImmediatePostData]
+        [ImmediatePostData]
+        [XafDisplayName("Account")]
         public virtual Account LinkedAccount {
             get => _linkedAccount;
             set
@@ -61,24 +74,34 @@ namespace SBD.GL.Module.BusinessObjects
                 {
                   tran.HiddenAccount= _linkedAccount;
                 }
-                //OnPropertyChanged();
-               // Transactions = Transactions;
+        
+                OpeningBalance = LinkedAccount != null ? HandyFunctions.GetOpeningBalance(this) : 0;
             }
         }
 
-
-        private BindingList<Account> _accounts;
         [NotMapped]
-        [Browsable(false)]
-        public BindingList<Account> Accounts => _accounts ?? (_accounts = HandyFunctions.GetValidTransactionAccounts(ObjectSpace));
+        [ModelDefault(ModelDefaultConstants.AllowEdit, ModelDefaultConstants.IsFalse)]
+        public decimal OpeningBalance { get; set; }
+
+        public decimal TotalCredits => Transactions.Sum(x => x.CreditAmount);
+        public decimal TotalDebits => Transactions.Sum(x => x.DebitAmount);
+
+        public decimal ClosingBalance => OpeningBalance + TotalCredits - TotalDebits;
+
+
+        //private BindingList<Account> _accounts;
+        //[NotMapped]
+        //[Browsable(false)]
+        //public BindingList<Account> Accounts => _accounts ?? (_accounts = HandyFunctions.GetValidTransactionAccounts(ObjectSpace));
 
         public override void OnLoaded()
         {
             // we need it loaded so it displays in the combo box
-            var x = Accounts;
+        //    var x = Accounts;
             base.OnLoaded();
         }
 
+       
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -91,5 +114,5 @@ namespace SBD.GL.Module.BusinessObjects
      
 
 
-    // [VisibleInReports]
+     
 }
