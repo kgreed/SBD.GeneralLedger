@@ -28,17 +28,26 @@ namespace SBD.GL.Module.BusinessObjects
           
         }
 
+        [NotMapped]
+        public bool IsBalanceSheet
+        {
+            get => GlCategory == GLCategoryEnum.Asset
+                   || GlCategory == GLCategoryEnum.Liability
+                   || GlCategory == GLCategoryEnum.Equity;
+            set { }
+        }
+
+    
+
         public override void OnCreated()
         {
-            bool isBalanceSheet = false;
+             
             if (CategoryOk)
             {
-                isBalanceSheet = GlCategory == GLCategoryEnum.Asset
-                                 || GlCategory == GLCategoryEnum.Liability
-                                 || GlCategory == GLCategoryEnum.Equity;
+                
             }
 
-            GstCategory = HandyFunctions.DefaultGstCategory(ObjectSpace,! isBalanceSheet);
+            GstCategory = HandyFunctions.DefaultGstCategory(ObjectSpace,! IsBalanceSheet);
             base.OnCreated();
         }
 

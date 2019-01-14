@@ -33,7 +33,7 @@ namespace SBD.GL.Module.BusinessObjects
 
         public override void OnCreated()
         {
-            if ( InstanceWideMemvars.Instance.EntryDate == null);
+            if ( InstanceWideMemvars.Instance.EntryDate == Convert.ToDateTime(null) )
             {
                 InstanceWideMemvars.Instance.EntryDate = DateTime.Now;
             }
@@ -44,7 +44,11 @@ namespace SBD.GL.Module.BusinessObjects
 
         public override void OnSaving()
         {
-            InstanceWideMemvars.Instance.EntryDate = Date;
+            if (Id == 0) //new
+            {
+                InstanceWideMemvars.Instance.EntryDate = Date;
+
+            }
             base.OnSaving();
         }
         [Browsable(false)]

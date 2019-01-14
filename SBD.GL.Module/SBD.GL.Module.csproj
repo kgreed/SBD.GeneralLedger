@@ -43,6 +43,8 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.EF.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,6 +67,8 @@
     <Reference Include="DevExpress.ExpressApp.Validation.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Persistent.BaseImpl.EF.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -81,8 +85,13 @@
     <Reference Include="DevExpress.Persistent.Base.v18.2">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Export, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -117,7 +126,7 @@
     <Compile Include="BusinessObjects\GstCategory.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\TranHeader.cs" />
-    <Compile Include="Calculate.cs" />
+    <Compile Include="InstanceWideMemvars.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
     <Compile Include="Controllers\ICashBookItemController.cs">
       <SubType>Component</SubType>
@@ -137,79 +146,6 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
     <Compile Include="BusinessObjects\H2Category.cs" />
-    <Compile Include="Migrations\201901100044197_InitialCreate.cs" />
-    <Compile Include="Migrations\201901100044197_InitialCreate.Designer.cs">
-      <DependentUpon>201901100044197_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100049255_one.cs" />
-    <Compile Include="Migrations\201901100049255_one.Designer.cs">
-      <DependentUpon>201901100049255_one.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100052094_two.cs" />
-    <Compile Include="Migrations\201901100052094_two.Designer.cs">
-      <DependentUpon>201901100052094_two.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100054556_three.cs" />
-    <Compile Include="Migrations\201901100054556_three.Designer.cs">
-      <DependentUpon>201901100054556_three.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100059283_req.cs" />
-    <Compile Include="Migrations\201901100059283_req.Designer.cs">
-      <DependentUpon>201901100059283_req.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100101014_card.cs" />
-    <Compile Include="Migrations\201901100101014_card.Designer.cs">
-      <DependentUpon>201901100101014_card.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100102321_date.cs" />
-    <Compile Include="Migrations\201901100102321_date.Designer.cs">
-      <DependentUpon>201901100102321_date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100103446_three1.cs" />
-    <Compile Include="Migrations\201901100103446_three1.Designer.cs">
-      <DependentUpon>201901100103446_three1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100107092_ref.cs" />
-    <Compile Include="Migrations\201901100107092_ref.Designer.cs">
-      <DependentUpon>201901100107092_ref.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100119300_child.cs" />
-    <Compile Include="Migrations\201901100119300_child.Designer.cs">
-      <DependentUpon>201901100119300_child.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100204562_tran.cs" />
-    <Compile Include="Migrations\201901100204562_tran.Designer.cs">
-      <DependentUpon>201901100204562_tran.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100227207_ef.cs" />
-    <Compile Include="Migrations\201901100227207_ef.Designer.cs">
-      <DependentUpon>201901100227207_ef.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100300410_test.cs" />
-    <Compile Include="Migrations\201901100300410_test.Designer.cs">
-      <DependentUpon>201901100300410_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100329142_account.cs" />
-    <Compile Include="Migrations\201901100329142_account.Designer.cs">
-      <DependentUpon>201901100329142_account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901112049475_bank.cs" />
-    <Compile Include="Migrations\201901112049475_bank.Designer.cs">
-      <DependentUpon>201901112049475_bank.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901112052124_bank2.cs" />
-    <Compile Include="Migrations\201901112052124_bank2.Designer.cs">
-      <DependentUpon>201901112052124_bank2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901112133532_dets.cs" />
-    <Compile Include="Migrations\201901112133532_dets.Designer.cs">
-      <DependentUpon>201901112133532_dets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901122124488_tranheader.cs" />
-    <Compile Include="Migrations\201901122124488_tranheader.Designer.cs">
-      <DependentUpon>201901122124488_tranheader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -218,68 +154,25 @@
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportParametersObject1.cs" />
+    <Compile Include="Reports\PandL\PandLReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PandL\PandLReport.Designer.cs">
+      <DependentUpon>PandLReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PandL\PandLReportDto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901100044197_InitialCreate.resx">
-      <DependentUpon>201901100044197_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100049255_one.resx">
-      <DependentUpon>201901100049255_one.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100052094_two.resx">
-      <DependentUpon>201901100052094_two.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100054556_three.resx">
-      <DependentUpon>201901100054556_three.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100059283_req.resx">
-      <DependentUpon>201901100059283_req.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100101014_card.resx">
-      <DependentUpon>201901100101014_card.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100102321_date.resx">
-      <DependentUpon>201901100102321_date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100103446_three1.resx">
-      <DependentUpon>201901100103446_three1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100107092_ref.resx">
-      <DependentUpon>201901100107092_ref.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100119300_child.resx">
-      <DependentUpon>201901100119300_child.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100204562_tran.resx">
-      <DependentUpon>201901100204562_tran.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100227207_ef.resx">
-      <DependentUpon>201901100227207_ef.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100300410_test.resx">
-      <DependentUpon>201901100300410_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100329142_account.resx">
-      <DependentUpon>201901100329142_account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901112049475_bank.resx">
-      <DependentUpon>201901112049475_bank.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901112052124_bank2.resx">
-      <DependentUpon>201901112052124_bank2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901112133532_dets.resx">
-      <DependentUpon>201901112133532_dets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901122124488_tranheader.resx">
-      <DependentUpon>201901122124488_tranheader.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\PandL\PandLReport.resx">
+      <DependentUpon>PandLReport.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="DatabaseUpdate\ReadMe.txt" />
@@ -305,6 +198,7 @@
   <ItemGroup>
     <Content Include="Welcome.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

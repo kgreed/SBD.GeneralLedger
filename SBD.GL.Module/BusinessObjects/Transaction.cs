@@ -10,18 +10,22 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using SBD.GL.Module.Annotations;
 
+
 namespace SBD.GL.Module.BusinessObjects
 {
-    [VisibleInReports]
+  //  [VisibleInReports]
     [NavigationItem("01 Main")]
     [DefaultListViewOptions(true, NewItemRowPosition.Bottom)]
     [DefaultProperty("Summary")]
+    [VisibleInReports]
     public class Transaction : BasicBo, IObjectSpaceLink, ICashbookLine , INotifyPropertyChanged
     {
         [Browsable(false)]
         [Key] public int Id { get; set; }
 
-        [Browsable(false)]
+       // [Browsable(false)]
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]
         [Required]
         public Decimal Amount { get; set; }
 
@@ -86,7 +90,7 @@ namespace SBD.GL.Module.BusinessObjects
                     CreditAccount = value;
                 }
                 DebitAccount = value;
-                OnPropertyChanged();
+                //OnPropertyChanged();
             }
         }
 
