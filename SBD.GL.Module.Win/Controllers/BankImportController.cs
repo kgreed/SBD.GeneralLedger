@@ -18,6 +18,7 @@ using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using System.IO;
+using DevExpress.XtraReports.UI;
 using LumenWorks.Framework.IO.Csv;
 using SBD.GL.Module.BusinessObjects;
 
@@ -81,7 +82,7 @@ namespace SBD.GL.Module.Win.Controllers
                 csv.ReadToEnd();
                 foreach (var rec in csv.Records)
                 {
-                    var bi = new BankImportLine
+                    var bil = new BankImportLine
                     {
                         Date = Convert.ToDateTime(rec[0]),
                         Amount = Convert.ToDecimal(rec[1]),
@@ -90,13 +91,26 @@ namespace SBD.GL.Module.Win.Controllers
                         Ref4 = rec[4],
                         Ref5 = rec[5]
                     };
-                    bankImport.Lines.Add(bi);
+                    bankImport.Lines.Add(bil);
                 }
 
                 Console.WriteLine(bankImport.Lines.Count);
             }
 
             View.ObjectSpace.CommitChanges();
+
+            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(BankImport));
+            //var createdView = Application.CreateListView(objectSpace, typeof(BankImport), true);
+            //createdView.ObjectSpace.Refresh(); // does not help
+
+
+            var bi = objectSpace.GetObject<BankImport>(bankImport);
+
+            var createdDetailView = Application.CreateDetailView(objectSpace, bi);
+          
+
+            e.ShowViewParameters.CreatedView = createdDetailView;
+
         }
 
         

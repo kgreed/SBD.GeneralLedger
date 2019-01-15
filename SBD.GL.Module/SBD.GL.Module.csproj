@@ -162,6 +162,15 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
     <Compile Include="BusinessObjects\H2Category.cs" />
+    <Compile Include="Migrations\201901150533576_InitialCreate.cs" />
+    <Compile Include="Migrations\201901150533576_InitialCreate.Designer.cs">
+      <DependentUpon>201901150533576_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901150616473_one.cs" />
+    <Compile Include="Migrations\201901150616473_one.Designer.cs">
+      <DependentUpon>201901150616473_one.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -186,6 +195,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController.resx">
       <DependentUpon>BankImportLineController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901150533576_InitialCreate.resx">
+      <DependentUpon>201901150533576_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901150616473_one.resx">
+      <DependentUpon>201901150616473_one.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
