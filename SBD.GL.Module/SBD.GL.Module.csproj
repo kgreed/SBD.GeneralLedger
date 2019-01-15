@@ -119,11 +119,27 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
     <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
+    <Compile Include="BusinessObjects\Imports\BankImport.cs" />
+    <Compile Include="BusinessObjects\Imports\BankImportLine.cs" />
+    <Compile Include="BusinessObjects\Imports\BankImportLineController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportLineController.Designer.cs">
+      <DependentUpon>BankImportLineController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportRule.cs" />
     <Compile Include="BusinessObjects\BasicBo.cs" />
     <Compile Include="BusinessObjects\Card.cs" />
     <Compile Include="BusinessObjects\GLCategory.cs" />
+    <Compile Include="BusinessObjects\GLCategoryEnum.cs" />
     <Compile Include="BusinessObjects\GLDbContext.cs" />
     <Compile Include="BusinessObjects\GstCategory.cs" />
+    <Compile Include="BusinessObjects\Imports\BankImportController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportController.Designer.cs">
+      <DependentUpon>BankImportController.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\TranHeader.cs" />
     <Compile Include="InstanceWideMemvars.cs" />
@@ -162,8 +178,15 @@
       <DependentUpon>PandLReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PandL\PandLReportDto.cs" />
+    <Compile Include="Reports\PandL\ReportData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
+      <DependentUpon>BankImportController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController.resx">
+      <DependentUpon>BankImportLineController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>

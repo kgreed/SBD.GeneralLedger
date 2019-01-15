@@ -10,7 +10,7 @@ using DevExpress.Persistent.Validation;
 using DevExpress.Persistent.Base.General;
 namespace DevExpress.Persistent.BaseImpl.EF
 {
-    [NavigationItem("Main")]
+     
     public class H2Category : IHCategory , IXafEntityObject, IObjectSpaceLink
     {
         public H2Category()
@@ -21,7 +21,7 @@ namespace DevExpress.Persistent.BaseImpl.EF
         public Int32 ID { get; protected set; }
         public String Name { get; set; }
         
-        public H2Category Parent { get; set; }
+        public virtual H2Category Parent { get; set; }
 
         [InverseProperty("Parent")]
         public virtual IList<H2Category> Children { get; set; }

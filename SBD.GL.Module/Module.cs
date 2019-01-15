@@ -17,6 +17,7 @@ using System.Data.Entity;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using SBD.GL.Module.BusinessObjects;
 using DevExpress.ExpressApp.ReportsV2;
+using SBD.GL.Module.Reports.PandL;
 
 namespace SBD.GL.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -41,7 +42,14 @@ namespace SBD.GL.Module {
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
-            return new ModuleUpdater[] { updater };
+
+            PredefinedReportsUpdater predefinedReportsUpdater =
+                new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
+            predefinedReportsUpdater.AddPredefinedReport<PandLReport>("P and L Report", typeof(PandLReportDto));
+
+            return new ModuleUpdater[] { updater, predefinedReportsUpdater };
+
+          
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);

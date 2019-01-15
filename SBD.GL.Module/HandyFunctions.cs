@@ -13,35 +13,35 @@ namespace SBD.GL.Module
 {
     public static class HandyFunctions
     {
-        public static List<Account> CreateAccountAndChildAccount()
-        {
+        //public static List<Account> CreateAccountAndChildAccount()
+        //{
 
-            using (var db = new GLDbContext())
-            {
+        //    using (var db = new GLDbContext())
+        //    {
 
-                var account = new Account
-                {
-                    Code = Guid.NewGuid().ToString().Substring(20), GlCategory = GLCategoryEnum.Asset
-                };
+        //        var account = new Account
+        //        {
+        //            Code = Guid.NewGuid().ToString().Substring(20), GlCategory = GLCategoryEnum.Asset
+        //        };
 
-                db.Accounts.Add(account);
-                db.SaveChanges();
+        //        db.Accounts.Add(account);
+        //        db.SaveChanges();
 
-                var child = new Account
-                {
-                    Code = Guid.NewGuid().ToString().Substring(20),
-                    GlCategory = GLCategoryEnum.Asset,
-                    Parent_Id = account.Id
-                };
-                db.Accounts.Add(child);
+        //        var child = new Account
+        //        {
+        //            Code = Guid.NewGuid().ToString().Substring(20),
+        //            GlCategory = GLCategoryEnum.Asset,
+        //            Parent_Id = account.Id
+        //        };
+        //        db.Accounts.Add(child);
 
-                db.SaveChanges();
+        //        db.SaveChanges();
 
-                return new List<Account> {account, child};
+        //        return new List<Account> {account, child};
 
-                // account.Children.Add(child);
-            }
-        }
+        //        // account.Children.Add(child);
+        //    }
+        //}
 
         public static BindingList<Account> GetValidTransactionAccounts(IObjectSpace objectSpace)
         {

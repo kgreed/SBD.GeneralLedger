@@ -5,7 +5,7 @@ using SBD.GL.Module.BusinessObjects;
 
 namespace SBD.GL.Module.Reports.PandL
 {
-    public static class ReportData
+    public static class PandLReportData
     {
         public static List<PandLReportDto> PandL(DateTime fromDate, DateTime toDate)
         {
@@ -13,21 +13,21 @@ namespace SBD.GL.Module.Reports.PandL
             using (var db = new GLDbContext())
             {
                 var debitResults = db.Transactions
-                    .Where(x => x.TranHeader.Date >= fromDate && x.TranHeader.Date <= toDate & ! x.DebitAccount.IsBalanceSheet)
+                    .Where(x => x.TranHeader.Date >= fromDate && x.TranHeader.Date <= toDate & ! x.DebitAccount.Category.IsBalanceSheet)
                     .GroupBy(x => x.DebitAccount)
                     .Select(r => new PandLReportDto
                     {
-                        Account = r.First().DebitAccount.Code,
+                        Account = r.FirstOrDefault().DebitAccount.Code,
                         Amount = r.Sum(x => 0- x.Amount)
                     }).ToList();
 
                 var creditResults = db.Transactions
                     .Where(x => x.TranHeader.Date >= fromDate &&
-                                x.TranHeader.Date <= toDate & !x.CreditAccount.IsBalanceSheet)
+                                x.TranHeader.Date <= toDate & !x.CreditAccount.Category.IsBalanceSheet)
                     .GroupBy(x => x.CreditAccount)
                     .Select(r => new PandLReportDto
                     {
-                        Account = r.First().CreditAccount.Code,
+                        Account = r.FirstOrDefault().CreditAccount.Code,
                         Amount = r.Sum(x => x.Amount)
                     }).ToList();
 

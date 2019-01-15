@@ -28,26 +28,16 @@ namespace SBD.GL.Module.BusinessObjects
           
         }
 
-        [NotMapped]
-        public bool IsBalanceSheet
-        {
-            get => GlCategory == GLCategoryEnum.Asset
-                   || GlCategory == GLCategoryEnum.Liability
-                   || GlCategory == GLCategoryEnum.Equity;
-            set { }
-        }
 
-    
+        [System.ComponentModel.DataAnnotations.Required]
+        public virtual GLCategory Category { get; set; }
+        
 
         public override void OnCreated()
         {
              
-            if (CategoryOk)
-            {
-                
-            }
-
-            GstCategory = HandyFunctions.DefaultGstCategory(ObjectSpace,! IsBalanceSheet);
+            
+            //GstCategory = HandyFunctions.DefaultGstCategory(ObjectSpace,! Category.IsBalanceSheet);
             base.OnCreated();
         }
 
@@ -98,20 +88,6 @@ namespace SBD.GL.Module.BusinessObjects
 
      
 
-        [NotMapped]
-        public GLCategoryEnum GlCategory
-        {
-            get => (GLCategoryEnum) Category;
-            set => Category = (int) value;
-        }
-
-        private int _category;
-
-        [Browsable(false)]
-        public int Category {
-            get => Parent?.Category ?? _category;
-            set => _category = value; 
-        }
 
         [Browsable(false)]
         [RuleFromBoolProperty("ParentCategoryOk", DefaultContexts.Save, "Parent Category if present must match")]
@@ -124,9 +100,9 @@ namespace SBD.GL.Module.BusinessObjects
             }
         }
 
-        [Browsable(false)]
-        [RuleFromBoolProperty("CategoryOk", DefaultContexts.Save, "Category must be valid")]
-        public bool CategoryOk => HandyFunctions.IsValidEnum<GLCategoryEnum>(Category);
+        //[Browsable(false)]
+        //[RuleFromBoolProperty("CategoryOk", DefaultContexts.Save, "Category must be valid")]
+        //public bool CategoryOk => HandyFunctions.IsValidEnum<GLCategoryEnum>(Category);
 
         ITreeNode ITreeNode.Parent => Parent;
 
