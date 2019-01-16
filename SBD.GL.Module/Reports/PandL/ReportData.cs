@@ -5,6 +5,7 @@ using SBD.GL.Module.BusinessObjects;
 
 namespace SBD.GL.Module.Reports.PandL
 {
+
     public static class PandLReportData
     {
         public static List<PandLReportDto> PandL(DateTime fromDate, DateTime toDate)

@@ -10,5 +10,6 @@ namespace SBD.GL.Module.Reports.PandL
     {
        public decimal Amount { get; set; }
        public string Account { get; set; }
+
     }
 }
