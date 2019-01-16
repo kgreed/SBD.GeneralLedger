@@ -14,6 +14,7 @@ namespace SBD.GL.Module.BusinessObjects
 
         public virtual BankImport  BankImport { get; set; }
         [Browsable(false)]
+       
         public int? TranHeader_Id { get; set; }
         [VisibleInListView(true)]
         [ForeignKey("TranHeader_Id")]

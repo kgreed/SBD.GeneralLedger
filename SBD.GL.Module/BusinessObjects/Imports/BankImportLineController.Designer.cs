@@ -29,43 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.popupBankImportWindowShowAction = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
-            this.popupWindowShowActionPickAccount = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
+            this.popupBankImportWindowShowActionMakeRule = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
             // 
-            // popupBankImportWindowShowAction
+            // popupBankImportWindowShowActionMakeRule
             // 
-            this.popupBankImportWindowShowAction.AcceptButtonCaption = null;
-            this.popupBankImportWindowShowAction.CancelButtonCaption = null;
-            this.popupBankImportWindowShowAction.Caption = "Make Rule";
-            this.popupBankImportWindowShowAction.Category = "Edit";
-            this.popupBankImportWindowShowAction.ConfirmationMessage = null;
-            this.popupBankImportWindowShowAction.Id = "Make Rule";
-            this.popupBankImportWindowShowAction.ToolTip = null;
-            this.popupBankImportWindowShowAction.CustomizePopupWindowParams += new DevExpress.ExpressApp.Actions.CustomizePopupWindowParamsEventHandler(this.popupBankImportWindowShowAction_CustomizePopupWindowParams);
-            this.popupBankImportWindowShowAction.Execute += new DevExpress.ExpressApp.Actions.PopupWindowShowActionExecuteEventHandler(this.popupBankImportWindowShowAction_Execute);
-            // 
-            // popupWindowShowActionPickAccount
-            // 
-            this.popupWindowShowActionPickAccount.AcceptButtonCaption = null;
-            this.popupWindowShowActionPickAccount.CancelButtonCaption = null;
-            this.popupWindowShowActionPickAccount.Caption = "Pick Account";
-            this.popupWindowShowActionPickAccount.ConfirmationMessage = null;
-            this.popupWindowShowActionPickAccount.Id = "Pick Account";
-            this.popupWindowShowActionPickAccount.ToolTip = null;
-            this.popupWindowShowActionPickAccount.CustomizePopupWindowParams += new DevExpress.ExpressApp.Actions.CustomizePopupWindowParamsEventHandler(this.popupWindowShowActionPickAccount_CustomizePopupWindowParams);
-            this.popupWindowShowActionPickAccount.Execute += new DevExpress.ExpressApp.Actions.PopupWindowShowActionExecuteEventHandler(this.popupWindowShowActionPickAccount_Execute);
+            this.popupBankImportWindowShowActionMakeRule.AcceptButtonCaption = null;
+            this.popupBankImportWindowShowActionMakeRule.CancelButtonCaption = null;
+            this.popupBankImportWindowShowActionMakeRule.Caption = "Make Rule";
+            this.popupBankImportWindowShowActionMakeRule.Category = "Menu";
+            this.popupBankImportWindowShowActionMakeRule.ConfirmationMessage = null;
+            this.popupBankImportWindowShowActionMakeRule.Id = "Make Rule";
+            this.popupBankImportWindowShowActionMakeRule.ToolTip = "Make a rule from the selected import line";
+            this.popupBankImportWindowShowActionMakeRule.CustomizePopupWindowParams += new DevExpress.ExpressApp.Actions.CustomizePopupWindowParamsEventHandler(this.popupBankImportWindowShowAction_CustomizePopupWindowParams);
+            this.popupBankImportWindowShowActionMakeRule.Execute += new DevExpress.ExpressApp.Actions.PopupWindowShowActionExecuteEventHandler(this.popupBankImportWindowShowAction_Execute);
+            this.popupBankImportWindowShowActionMakeRule.Cancel += new System.EventHandler(this.popupBankImportWindowShowActionMakeRule_Cancel);
             // 
             // BankImportLineController
             // 
-            this.Actions.Add(this.popupBankImportWindowShowAction);
-            this.Actions.Add(this.popupWindowShowActionPickAccount);
+            this.Actions.Add(this.popupBankImportWindowShowActionMakeRule);
 
         }
 
 
         #endregion
 
-        private DevExpress.ExpressApp.Actions.PopupWindowShowAction popupBankImportWindowShowAction;
-        private DevExpress.ExpressApp.Actions.PopupWindowShowAction popupWindowShowActionPickAccount;
+        private DevExpress.ExpressApp.Actions.PopupWindowShowAction popupBankImportWindowShowActionMakeRule;
     }
 }

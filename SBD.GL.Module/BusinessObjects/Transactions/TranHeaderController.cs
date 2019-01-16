@@ -19,25 +19,34 @@ namespace SBD.GL.Module.Controllers
         protected override void OnActivated()
         {
             controller = Frame.GetController<DeleteObjectsViewController>();
-            controller.DeleteAction.Execute += DeleteAction_Execute;     
+            controller.Deleting += Controller_Deleting;
             base.OnActivated();
         }
 
-        private void DeleteAction_Execute(object sender, DevExpress.ExpressApp.Actions.SimpleActionExecuteEventArgs e)
+        private void Controller_Deleting(object sender, DeletingEventArgs e)
         {
-            var header = e.CurrentObject as TranHeader;
-            var criteria = CriteriaOperator.Parse("[TranHeader_Id] > ?",header.Id);
-            var matchingImportLines = View.ObjectSpace.GetObjects<BankImportLine>(criteria);  // there should only be one
-            foreach (var line in matchingImportLines)
+            foreach (var obj in e.Objects)
             {
-                line.MatchingHeader = null;
-                View.ObjectSpace.ModifiedObjects.Add(line);
+                var header = obj as TranHeader;
+                var criteria = CriteriaOperator.Parse("[TranHeader_Id] == ?", header.Id);
+                var matchingImportLines =
+                    View.ObjectSpace.GetObjects<BankImportLine>(criteria); // there should only be one
+                foreach (var line in matchingImportLines)
+                {
+                    line.MatchingHeader = null;
+                    View.ObjectSpace.ModifiedObjects.Add(line);
+                }
+
+                foreach (var tran in header.Transactions)
+                {
+                    View.ObjectSpace.Delete(tran);
+                }
             }
         }
 
         protected override void OnDeactivated()
         {
-            controller.DeleteAction.Execute -= DeleteAction_Execute;
+            controller.Deleting -= Controller_Deleting;
             base.OnDeactivated();
         }
     }

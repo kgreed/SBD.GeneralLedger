@@ -28,8 +28,11 @@ namespace SBD.GL.Module.BusinessObjects
           
         }
 
+        [Browsable(false)]
+        public int GLCategory_Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
+        [ForeignKey("GLCategory_Id")]
         public virtual GLCategory Category { get; set; }
         
 
@@ -80,11 +83,11 @@ namespace SBD.GL.Module.BusinessObjects
         [Browsable(false)]
         public decimal OpeningBalance { get; set; }
 
-        [NotMapped]
-        public decimal Opening_Balance {
-            get => Header ? 0 : OpeningBalance;
-            set => OpeningBalance = value;
-        }
+        //[NotMapped]
+        //public decimal Opening_Balance {
+        //    get => Header ? 0 : OpeningBalance;
+        //    set => OpeningBalance = value;
+        //}
 
      
 

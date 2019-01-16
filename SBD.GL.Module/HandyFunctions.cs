@@ -215,5 +215,29 @@ namespace SBD.GL.Module
             if (lineRef.Length == 0 || ruleRef.Length == 0) return true;
             return lineRef.Contains(ruleRef);
         }
+
+        public static void AddAccount(BankImportRule rule, GLCategoryEnum type)
+        {
+            var os = rule.ObjectSpace;
+            var account = os.CreateObject<Account>();
+            var glCriteria = CriteriaOperator.Parse("[Category] == ? ", type);
+            var glCategories = os.GetObjects<GLCategory>(glCriteria);
+            var glCategory = glCategories.FirstOrDefault();
+            var criteria = CriteriaOperator.Parse("Parent_ID == null && [GLCategory_Id] == ? ", glCategory.Id);
+            
+            var rootExpenseAccount = os.FindObject<Account>(criteria);
+            account.Parent = rootExpenseAccount;
+            account.Category = glCategory;
+            var isPandL = type == GLCategoryEnum.CostOfSales ||
+                           type == GLCategoryEnum.Income ||
+                           type == GLCategoryEnum.Expense ||
+                           type == GLCategoryEnum.OtherExpense || 
+                           type == GLCategoryEnum.OtherIncome;
+            account.GstCategory = DefaultGstCategory(os, isPandL);
+            account.Code = $"{account.Parent.Code} {rule.RuleName}";
+            os.ModifiedObjects.Add(account);
+            rule.ToAccount = account;
+            rule.ObjectSpace.ReloadObject(rule);
+        }
     }
 }

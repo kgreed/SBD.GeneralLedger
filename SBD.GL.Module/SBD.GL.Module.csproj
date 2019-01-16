@@ -119,8 +119,17 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
     <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
+    <Compile Include="BusinessObjects\Imports\ActionInPopupController.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BusinessObjects\Imports\BankImport.cs" />
     <Compile Include="BusinessObjects\Imports\BankImportLine.cs" />
+    <Compile Include="BusinessObjects\Imports\BankImportLineController2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportLineController2.Designer.cs">
+      <DependentUpon>BankImportLineController2.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjects\Imports\BankImportLineController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,6 +149,13 @@
     <Compile Include="BusinessObjects\Imports\BankImportController.Designer.cs">
       <DependentUpon>BankImportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportRuleController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\BankImportRuleController.Designer.cs">
+      <DependentUpon>BankImportRuleController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\Imports\ShowPopupController.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
       <SubType>Component</SubType>
@@ -150,11 +166,11 @@
     <Compile Include="BusinessObjects\Transactions\TranHeader.cs" />
     <Compile Include="InstanceWideMemvars.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
-    <Compile Include="BusinessObjects\Accounts\ICategoryController.cs">
+    <Compile Include="BusinessObjects\Accounts\IHCategoryController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\Accounts\ICategoryController.Designer.cs">
-      <DependentUpon>ICategoryController.cs</DependentUpon>
+    <Compile Include="BusinessObjects\Accounts\IHCategoryController.Designer.cs">
+      <DependentUpon>IHCategoryController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Job.cs" />
     <Compile Include="BusinessObjects\Transactions\Transaction.cs" />
@@ -162,6 +178,15 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
     <Compile Include="BusinessObjects\Accounts\H2Category.cs" />
+    <Compile Include="Migrations\201901160245272_InitialCreate.cs" />
+    <Compile Include="Migrations\201901160245272_InitialCreate.Designer.cs">
+      <DependentUpon>201901160245272_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901162027009_one.cs" />
+    <Compile Include="Migrations\201901162027009_one.Designer.cs">
+      <DependentUpon>201901162027009_one.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -191,8 +216,20 @@
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
       <DependentUpon>BankImportController.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController2.resx">
+      <DependentUpon>BankImportLineController2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController.resx">
       <DependentUpon>BankImportLineController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportRuleController.resx">
+      <DependentUpon>BankImportRuleController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901160245272_InitialCreate.resx">
+      <DependentUpon>201901160245272_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901162027009_one.resx">
+      <DependentUpon>201901162027009_one.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">

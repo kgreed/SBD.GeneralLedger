@@ -19,37 +19,23 @@ namespace SBD.GL.Module.BusinessObjects.Imports
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
     public partial class BankImportLineController : ViewController
     {
+        IObjectSpace newObjectSpace;
         public BankImportLineController()
         {
             InitializeComponent();
             TargetObjectType = typeof(BankImportLine);
-            // Target required Views (via the TargetXXX properties) and create their Actions.
         }
-        protected override void OnActivated()
-        {
-            base.OnActivated();
-            // Perform various tasks depending on the target View.
-        }
-        protected override void OnViewControlsCreated()
-        {
-            base.OnViewControlsCreated();
-            // Access and customize the target View control.
-        }
-        protected override void OnDeactivated()
-        {
-            // Unsubscribe from previously subscribed events and release other references and resources.
-            base.OnDeactivated();
-        }
+       
 
         private void popupBankImportWindowShowAction_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
-             e.PopupWindowView.ObjectSpace.CommitChanges();
+             newObjectSpace.CommitChanges();
         }
 
         private void popupBankImportWindowShowAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)
         {
             var importLine = View.CurrentObject as BankImportLine;
-            var newObjectSpace = Application.CreateObjectSpace(typeof(BankImportRule));
+            newObjectSpace = Application.CreateObjectSpace(typeof(BankImportRule));
            
             var newRule = newObjectSpace.CreateObject<BankImportRule>();
             newRule.FromAccount = newObjectSpace.GetObject(importLine.BankImport.Account);
@@ -60,34 +46,15 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             newRule.Ref4 = importLine.Ref4;
             newRule.Ref5 = importLine.Ref5;
 
-            var createdView = Application.CreateDetailView(newObjectSpace, newRule);
-            e.View = createdView;
+            e.View = Application.CreateDetailView(newObjectSpace, newRule);
+    
         }
 
-        private void popupWindowShowActionPickAccount_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)
+        
+
+        private void popupBankImportWindowShowActionMakeRule_Cancel(object sender, EventArgs e)
         {
-
-            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(Account));
-            string listViewId = Application.FindLookupListViewId(typeof(Account));
-            CollectionSourceBase collectionSource = Application.CreateCollectionSource(objectSpace, typeof(Account), listViewId);
-            e.View = Application.CreateListView(listViewId, collectionSource, true);
-
+            newObjectSpace.Rollback(false);
         }
-
-        private void popupWindowShowActionPickAccount_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
-        {
-            var account = e.CurrentObject as Account;
-            var selectedAccount = View.ObjectSpace.GetObject(account);
-
-            foreach (var obj in View.SelectedObjects)
-            {
-                var line = obj as BankImportLine;
-                line.Account = selectedAccount;
-                View.ObjectSpace.ModifiedObjects.Add(line);
-            }
-            View.ObjectSpace.CommitChanges();
-            View.ObjectSpace.Refresh();
-        }
-
     }
 }
