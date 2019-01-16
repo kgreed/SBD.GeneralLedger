@@ -100,10 +100,6 @@ namespace SBD.GL.Module.BusinessObjects
             }
         }
 
-        //[Browsable(false)]
-        //[RuleFromBoolProperty("CategoryOk", DefaultContexts.Save, "Category must be valid")]
-        //public bool CategoryOk => HandyFunctions.IsValidEnum<GLCategoryEnum>(Category);
-
         ITreeNode ITreeNode.Parent => Parent;
 
         string ITreeNode.Name => Code;

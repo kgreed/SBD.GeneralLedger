@@ -46,7 +46,7 @@ namespace SBD.GL.Module.BusinessObjects
      
             base.OnCreated();
         }
-
+        
         public override void OnSaving()
         {
             if (Id == 0) //new

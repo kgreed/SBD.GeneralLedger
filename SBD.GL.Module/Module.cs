@@ -18,6 +18,7 @@ using DevExpress.ExpressApp.ConditionalAppearance;
 using SBD.GL.Module.BusinessObjects;
 using DevExpress.ExpressApp.ReportsV2;
 using SBD.GL.Module.Reports.PandL;
+using BalanceSheetReport = SBD.GL.Module.Reports.BalanceSheet.BalanceSheetReport;
 
 namespace SBD.GL.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -46,6 +47,7 @@ namespace SBD.GL.Module {
             PredefinedReportsUpdater predefinedReportsUpdater =
                 new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
             predefinedReportsUpdater.AddPredefinedReport<PandLReport>("P and L Report", typeof(PandLReportDto));
+            predefinedReportsUpdater.AddPredefinedReport<BalanceSheetReport>("BalanceSheet Report", typeof(BalanceSheetDto));
 
             return new ModuleUpdater[] { updater, predefinedReportsUpdater };
 

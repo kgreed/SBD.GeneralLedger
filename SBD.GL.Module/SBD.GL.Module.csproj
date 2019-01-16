@@ -141,27 +141,27 @@
       <DependentUpon>BankImportController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Setting.cs" />
-    <Compile Include="BusinessObjects\TranHeader.cs" />
+    <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Transactions\TranHeaderController.Designer.cs">
+      <DependentUpon>TranHeaderController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\Transactions\TranHeader.cs" />
     <Compile Include="InstanceWideMemvars.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
-    <Compile Include="Controllers\ICashBookItemController.cs">
+    <Compile Include="BusinessObjects\Accounts\ICategoryController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\ICashBookItemController.Designer.cs">
-      <DependentUpon>ICashBookItemController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\ICategoryController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controllers\ICategoryController.Designer.cs">
+    <Compile Include="BusinessObjects\Accounts\ICategoryController.Designer.cs">
       <DependentUpon>ICategoryController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Job.cs" />
-    <Compile Include="BusinessObjects\Transaction.cs" />
+    <Compile Include="BusinessObjects\Transactions\Transaction.cs" />
     <Compile Include="HandyControllerFunctions.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="HandyFunctions.cs" />
-    <Compile Include="BusinessObjects\H2Category.cs" />
+    <Compile Include="BusinessObjects\Accounts\H2Category.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -170,15 +170,22 @@
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportParametersObject1.cs" />
+    <Compile Include="Reports\BalanceSheet\BalanceSheetDto.cs" />
+    <Compile Include="Reports\BalanceSheet\BalanceSheetReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BalanceSheet\BalanceSheetReport.Designer.cs">
+      <DependentUpon>BalanceSheetReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\PandL\PandLReport.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\PandL\PandLReport.Designer.cs">
       <DependentUpon>PandLReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PandL\PandLReportData.cs" />
     <Compile Include="Reports\PandL\PandLReportDto.cs" />
-    <Compile Include="Reports\PandL\ReportData.cs" />
+    <Compile Include="Reports\BalanceSheet\BalanceSheetData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
@@ -193,6 +200,9 @@
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\BalanceSheet\BalanceSheetReport.resx">
+      <DependentUpon>BalanceSheetReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\PandL\PandLReport.resx">
       <DependentUpon>PandLReport.cs</DependentUpon>
     </EmbeddedResource>

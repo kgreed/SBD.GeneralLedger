@@ -5,12 +5,11 @@ using SBD.GL.Module.BusinessObjects;
 
 namespace SBD.GL.Module.Reports.PandL
 {
-
     public static class PandLReportData
     {
         public static List<PandLReportDto> PandL(DateTime fromDate, DateTime toDate)
         {
-            var data = new List<PandLReportDto>();
+           
             using (var db = new GLDbContext())
             {
                 var debitResults = db.Transactions

@@ -13,7 +13,7 @@ using SBD.GL.Module.Annotations;
 
 namespace SBD.GL.Module.BusinessObjects
 {
-  //  [VisibleInReports]
+  
     [NavigationItem("01 Main")]
     [DefaultListViewOptions(true, NewItemRowPosition.Bottom)]
     [DefaultProperty("Summary")]
@@ -23,17 +23,18 @@ namespace SBD.GL.Module.BusinessObjects
         [Browsable(false)]
         [Key] public int Id { get; set; }
 
-       // [Browsable(false)]
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
         [Required]
         public Decimal Amount { get; set; }
 
         [Browsable(false)]
+        [VisibleInReports(true)]
         [Required]
         public virtual Account DebitAccount { get; set; }
 
         [Browsable(false)]
+        [VisibleInReports(true)]
         [Required]
         public virtual Account CreditAccount { get; set; }
 

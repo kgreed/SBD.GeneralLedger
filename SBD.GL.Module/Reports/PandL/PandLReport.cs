@@ -16,17 +16,24 @@ namespace SBD.GL.Module.Reports.PandL
         public PandLReport()
         {
             InitializeComponent();
-            if ((DateTime)Parameters[0].Value == DateTime.MinValue)
+            InitializeParameters();
+        }
+
+        private void InitializeParameters()
+        {
+            if ((DateTime) Parameters[0].Value == DateTime.MinValue)
             {
                 var date = DateTime.Today;
                 var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
                 Parameters[0].Value = firstDayOfMonth;
             }
 
-            if ((DateTime)Parameters[1].Value == DateTime.MinValue)
+            if ((DateTime) Parameters[1].Value == DateTime.MinValue)
             {
                 Parameters[1].Value = DateTime.Today;
             }
+            
+           
         }
 
         protected override void OnParametersRequestSubmit(ParametersRequestEventArgs e)
@@ -41,6 +48,9 @@ namespace SBD.GL.Module.Reports.PandL
 
             var fromDate = (DateTime) this.Parameters[0].Value;
             var toDate = (DateTime) this.Parameters[1].Value  ;
+
+            
+            this.xrLabelHeading.Text = $"Profit and Loss {fromDate.ToShortDateString()} to {toDate.ToShortDateString()}";
             var results = PandLReportData.PandL(fromDate, toDate);
             DataSource = results;
         }

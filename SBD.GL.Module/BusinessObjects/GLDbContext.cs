@@ -69,10 +69,8 @@ namespace SBD.GL.Module.BusinessObjects
 
 
 
-            //modelBuilder.Entity<TranHeader>()
-            //    .HasMany(x => x.Transactions)
-            //    .WithRequired(x => x.TranHeader)
-            //    .HasForeignKey(x => x.TranHeader_Id).WillCascadeOnDelete(true);
+            modelBuilder.Entity<BankImportLine>()
+                .HasOptional(x => x.MatchingHeader);
 
 
 

@@ -1,6 +1,6 @@
 ﻿namespace SBD.GL.Module.Controllers
 {
-    partial class CashbookController
+    partial class TranHeaderController
     {
         /// <summary>
         /// Required designer variable.
