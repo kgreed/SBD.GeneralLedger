@@ -174,11 +174,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BankImportController.cs">
+    <Compile Include="Controllers\AccountController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\BankImportController.Designer.cs">
-      <DependentUpon>BankImportController.cs</DependentUpon>
+    <Compile Include="Controllers\AccountController.Designer.cs">
+      <DependentUpon>AccountController.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomListEditor.cs" />
     <Compile Include="WinModule.cs">
@@ -190,8 +190,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controllers\BankImportController.resx">
-      <DependentUpon>BankImportController.cs</DependentUpon>
+    <EmbeddedResource Include="Controllers\AccountController.resx">
+      <DependentUpon>AccountController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Properties\licenses.licx" />

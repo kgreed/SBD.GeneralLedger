@@ -48,11 +48,12 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
         private void popupBankImportWindowShowAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)
         {
+            var importLine = View.CurrentObject as BankImportLine;
             var newObjectSpace = Application.CreateObjectSpace(typeof(BankImportRule));
            
             var newRule = newObjectSpace.CreateObject<BankImportRule>();
-
-            var importLine = View.CurrentObject as BankImportLine;
+            newRule.FromAccount = newObjectSpace.GetObject(importLine.BankImport.Account);
+          
             newRule.Ref1 = importLine.Ref1;
             newRule.Ref2 = importLine.Ref2;
             newRule.Ref3 = importLine.Ref3;

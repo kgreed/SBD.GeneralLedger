@@ -48,33 +48,13 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
             var bankImport = e.CurrentObject as BankImport;
 
-            var rules = View.ObjectSpace.GetObjects<BankImportRule>();
-            foreach (var rule in rules)
-            {
-                foreach (var line in bankImport.Lines)
-                {
-                    if (!MatchOK(line.Ref1, rule.Ref1)) { continue;}
-                    if (!MatchOK(line.Ref2, rule.Ref2)) { continue; }
-                    if (!MatchOK(line.Ref3, rule.Ref3)) { continue; }
-                    if (!MatchOK(line.Ref4, rule.Ref4)) { continue; }
-                    if (!MatchOK(line.Ref5, rule.Ref5)) { continue; }
-                   
-                    line.Account = View.ObjectSpace.GetObject(rule.Account);
-
-                    if ( line.Account != null)
-                    { View.ObjectSpace.ModifiedObjects.Add(line);}
-                }
-            }
+            HandyFunctions.RunBankRules(bankImport,View.ObjectSpace);
             View.ObjectSpace.CommitChanges();
             View.ObjectSpace.Refresh();
         }
 
-        private bool MatchOK(string lineRef, string ruleRef)
-        {
-            if (lineRef == null || ruleRef == null ) return true;
-            if (lineRef.Length == 0 || ruleRef.Length == 0) return true;
-            return lineRef.Contains(ruleRef);
-        }
+  
+      
 
         private void actClearAccounts_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
@@ -83,6 +63,33 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             {
                 line.Account = null;
                 View.ObjectSpace.ModifiedObjects.Add(line);
+            }
+            View.ObjectSpace.CommitChanges();
+            View.ObjectSpace.Refresh();
+        }
+
+        private void actPost_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var bankImport = e.CurrentObject as BankImport;
+
+            foreach (var line in bankImport.Lines.Where(x => x.MatchingHeader == null && x.Account != null))
+            {
+                var header = View.ObjectSpace.CreateObject<TranHeader>();
+                header.Date = line.Date;
+                header.LinkedAccount = View.ObjectSpace.GetObject(bankImport.Account);
+                var tran = View.ObjectSpace.CreateObject<Transaction>();
+                tran.Account = View.ObjectSpace.GetObject(line.Account);
+                tran.HiddenAccount = header.LinkedAccount;
+                tran.Amount = line.Amount;
+                tran.TranHeader = header;
+                tran.Memo = line.Note;
+                header.Transactions.Add(tran);
+                var lineobj = View.ObjectSpace.GetObject(line);
+                lineobj.MatchingHeader = header;
+                View.ObjectSpace.ModifiedObjects.Add(lineobj);
+                line.MatchingHeader = header;
+                View.ObjectSpace.ModifiedObjects.Add(header);
+                View.ObjectSpace.ModifiedObjects.Add(tran);
             }
             View.ObjectSpace.CommitChanges();
             View.ObjectSpace.Refresh();

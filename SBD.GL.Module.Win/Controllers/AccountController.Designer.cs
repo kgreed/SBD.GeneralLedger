@@ -1,6 +1,6 @@
 ﻿namespace SBD.GL.Module.Win.Controllers
 {
-    partial class BankImportController
+    partial class AccountController
     {
         /// <summary>
         /// Required designer variable.

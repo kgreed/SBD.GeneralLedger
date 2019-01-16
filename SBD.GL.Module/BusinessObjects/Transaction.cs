@@ -67,7 +67,7 @@ namespace SBD.GL.Module.BusinessObjects
                     DebitAccount = value  ;
                 }
                 CreditAccount =   value;
-                HiddenAccount = TranHeader.LinkedAccount;
+              //  HiddenAccount = TranHeader.LinkedAccount;
             }
         }
 
@@ -82,7 +82,7 @@ namespace SBD.GL.Module.BusinessObjects
                 }
 
                 return DebitAccount;
-            } 
+            }
             set
             {
                 if (Amount > 0)

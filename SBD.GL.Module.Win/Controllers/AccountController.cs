@@ -17,7 +17,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
-using System.IO;
+
 using DevExpress.XtraReports.UI;
 using LumenWorks.Framework.IO.Csv;
 using SBD.GL.Module.BusinessObjects;
@@ -25,9 +25,9 @@ using SBD.GL.Module.BusinessObjects;
 namespace SBD.GL.Module.Win.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class BankImportController : ViewController
+    public partial class AccountController : ViewController
     {
-        public BankImportController()
+        public AccountController()
         {
             InitializeComponent();
             TargetObjectType = typeof(Account);
@@ -94,7 +94,7 @@ namespace SBD.GL.Module.Win.Controllers
                     bankImport.Lines.Add(bil);
                 }
 
-                Console.WriteLine(bankImport.Lines.Count);
+               
             }
 
             View.ObjectSpace.CommitChanges();
@@ -105,6 +105,9 @@ namespace SBD.GL.Module.Win.Controllers
 
 
             var bi = objectSpace.GetObject<BankImport>(bankImport);
+
+            HandyFunctions.RunBankRules(bi, objectSpace);
+
 
             var createdDetailView = Application.CreateDetailView(objectSpace, bi);
           

@@ -5,7 +5,7 @@ using DevExpress.Xpo;
 
 namespace SBD.GL.Module.BusinessObjects
 {
-    [NavigationItem("01 Imports")]
+    [NavigationItem("02 Imports")]
     public class BankImport
     {
         [System.ComponentModel.DataAnnotations.Key]

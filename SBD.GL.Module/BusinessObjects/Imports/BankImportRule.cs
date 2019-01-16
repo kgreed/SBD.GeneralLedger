@@ -3,7 +3,7 @@ using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects
 {
-    [NavigationItem("01 Imports")]
+    [NavigationItem("02 Imports")]
     public class BankImportRule
     {
         [Key]
@@ -13,7 +13,10 @@ namespace SBD.GL.Module.BusinessObjects
         public string Ref3 { get; set; }
         public string Ref4 { get; set; }
         public string Ref5 { get; set; }
-        public virtual Account Account { get; set; }
+        [Required]
+        public virtual Account FromAccount { get; set; }
+        [Required]
+        public virtual Account ToAccount { get; set; }
 
         public string RuleName { get; set; }
     }

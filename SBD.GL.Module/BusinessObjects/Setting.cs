@@ -5,7 +5,7 @@ using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects
 {
-    [NavigationItem("02 Config")]
+    [NavigationItem("03 Config")]
     public class Setting
     {
         [Browsable(false)]

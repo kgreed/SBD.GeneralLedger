@@ -113,11 +113,13 @@ namespace SBD.GL.Module
                 {
                     if (header.LinkedAccount == null) return 0;
                     var credits = db.Transactions
-                        .Where(x => x.CreditAccount.Id == header.LinkedAccount.Id && x.TranHeader.StatementNumber < header.StatementNumber);
-                        
-                    var creditTotal    =  credits.Any() ? credits.Sum(y => y.Amount) :0;
+                        .Where(x => x.CreditAccount.Id == header.LinkedAccount.Id &&
+                                    x.TranHeader.StatementNumber < header.StatementNumber);
+
+                    var creditTotal = credits.Any() ? credits.Sum(y => y.Amount) : 0;
                     var debits = db.Transactions
-                        .Where(x => x.DebitAccount.Id == header.LinkedAccount.Id && x.TranHeader.StatementNumber < header.StatementNumber);
+                        .Where(x => x.DebitAccount.Id == header.LinkedAccount.Id &&
+                                    x.TranHeader.StatementNumber < header.StatementNumber);
                     var debitTotal = debits.Any() ? debits.Sum(y => y.Amount) : 0;
                     return header.LinkedAccount.OpeningBalance + creditTotal - debitTotal;
 
@@ -138,7 +140,7 @@ namespace SBD.GL.Module
                 try
                 {
                     var lastStatement = db.TranHeaders.Where(x => x.LinkedAccount.Id == linkedAccount.Id)
-                  .OrderByDescending(x => x.StatementNumber).FirstOrDefault();
+                        .OrderByDescending(x => x.StatementNumber).FirstOrDefault();
 
 
                     if (lastStatement == null)
@@ -153,8 +155,65 @@ namespace SBD.GL.Module
                     Console.WriteLine(e);
                     throw;
                 }
-              
+
             }
+        }
+
+        public static void RunBankRules(BankImport bankImport, IObjectSpace objectSpace)
+        {
+
+            var rules = objectSpace.GetObjects<BankImportRule>();
+            foreach (var rule in rules)
+            {
+                foreach (var line in bankImport.Lines)
+                {
+                    if (!MatchOK(line.Ref1, rule.Ref1))
+                    {
+                        continue;
+                    }
+
+                    if (!MatchOK(line.Ref2, rule.Ref2))
+                    {
+                        continue;
+                    }
+
+                    if (!MatchOK(line.Ref3, rule.Ref3))
+                    {
+                        continue;
+                    }
+
+                    if (!MatchOK(line.Ref4, rule.Ref4))
+                    {
+                        continue;
+                    }
+
+                    if (!MatchOK(line.Ref5, rule.Ref5))
+                    {
+                        continue;
+                    }
+
+                    line.Account = objectSpace.GetObject(rule.ToAccount);
+
+                    if (line.Account != null)
+                    {
+                        objectSpace.ModifiedObjects.Add(line);
+                    }
+                }
+
+            }
+
+
+
+
+
+        }
+
+
+        private static bool MatchOK(string lineRef, string ruleRef)
+        {
+            if (lineRef == null || ruleRef == null) return true;
+            if (lineRef.Length == 0 || ruleRef.Length == 0) return true;
+            return lineRef.Contains(ruleRef);
         }
     }
 }

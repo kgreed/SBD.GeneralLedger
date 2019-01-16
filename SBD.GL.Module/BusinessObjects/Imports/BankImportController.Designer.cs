@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.actApplyRules = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actClearAccounts = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actPost = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
             // actApplyRules
             // 
@@ -48,10 +49,19 @@
             this.actClearAccounts.ToolTip = null;
             this.actClearAccounts.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actClearAccounts_Execute);
             // 
+            // actPost
+            // 
+            this.actPost.Caption = "Post";
+            this.actPost.ConfirmationMessage = null;
+            this.actPost.Id = "Post";
+            this.actPost.ToolTip = null;
+            this.actPost.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actPost_Execute);
+            // 
             // BankImportController
             // 
             this.Actions.Add(this.actApplyRules);
             this.Actions.Add(this.actClearAccounts);
+            this.Actions.Add(this.actPost);
 
         }
 
@@ -59,5 +69,6 @@
 
         private DevExpress.ExpressApp.Actions.SimpleAction actApplyRules;
         private DevExpress.ExpressApp.Actions.SimpleAction actClearAccounts;
+        private DevExpress.ExpressApp.Actions.SimpleAction actPost;
     }
 }

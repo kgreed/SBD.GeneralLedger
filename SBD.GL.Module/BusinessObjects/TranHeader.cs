@@ -31,6 +31,11 @@ namespace SBD.GL.Module.BusinessObjects
         public DateTime Date { get; set; }
         public virtual Card Card { get; set; }
 
+        //[Browsable(false)]
+        //public int? BankImportLine_Id { get; set; }
+        //[ForeignKey("BankImportLine_Id")]
+        //public virtual BankImportLine  BankImportLine { get; set; }
+
         public override void OnCreated()
         {
             if ( InstanceWideMemvars.Instance.EntryDate == Convert.ToDateTime(null) )
@@ -51,7 +56,7 @@ namespace SBD.GL.Module.BusinessObjects
             }
             base.OnSaving();
         }
-        [Browsable(false)]
+      //  [Browsable(false)]
         [Key] public int Id { get; set; }
 
         [Browsable(false)]
@@ -74,10 +79,10 @@ namespace SBD.GL.Module.BusinessObjects
             set
             {
                 _linkedAccount = value;
-                foreach (var tran in Transactions)
-                {
-                  tran.HiddenAccount= _linkedAccount;
-                }
+                //foreach (var tran in Transactions)
+                //{
+                //  tran.HiddenAccount= _linkedAccount;
+                //}
         
                 OpeningBalance = LinkedAccount != null ? HandyFunctions.GetOpeningBalance(this) : 0;
             }
