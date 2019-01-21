@@ -6,6 +6,7 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.Win;
 using DevExpress.Persistent.Base;
+using SBD.GL.Module;
 
 namespace SBD.GL.Win {
     static class Program {
@@ -41,6 +42,11 @@ namespace SBD.GL.Win {
             }
 #endif
             try {
+
+                // access db so it is created here.
+                HandyFunctions.EnsureDatabaseIsCreated();
+                // end of modification
+
                 winApplication.Setup();
                 winApplication.Start();
             }

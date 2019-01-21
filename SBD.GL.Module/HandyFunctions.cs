@@ -239,5 +239,21 @@ namespace SBD.GL.Module
             rule.ToAccount = account;
             rule.ObjectSpace.ReloadObject(rule);
         }
+
+        public static void EnsureDatabaseIsCreated()
+        {
+            try
+            {
+                using (var db = new GLDbContext())
+                {
+                    var thing = db.Cards.FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

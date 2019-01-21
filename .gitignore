@@ -4,3 +4,6 @@
 
 /.vs
 /packages/EntityFramework.6.2.0
+/packages/System.Data.SQLite.Linq.1.0.109.0
+/packages/System.Data.SQLite.EF6.1.0.109.0
+/packages
