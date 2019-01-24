@@ -10,12 +10,15 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using SBD.GL.Module.Annotations;
+using SBD.GL.Module.BusinessObjects.Accounts;
 
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Transactions
 {
 
     [NavigationItem("01 Main")]
     [DefaultProperty("Id")]
+    [XafDisplayName("Transaction Headers")]
+    [ImageName("BO_Contract")]
     public class TranHeader : BasicBo, IObjectSpaceLink, INotifyPropertyChanged
     {
         public TranHeader()
@@ -84,7 +87,7 @@ namespace SBD.GL.Module.BusinessObjects
                 //  tran.HiddenAccount= _linkedAccount;
                 //}
         
-                OpeningBalance = LinkedAccount != null ? HandyFunctions.GetOpeningBalance(this) : 0;
+                OpeningBalance = LinkedAccount != null ? AccountFunctions.GetOpeningBalance(this) : 0;
             }
         }
 
@@ -98,11 +101,7 @@ namespace SBD.GL.Module.BusinessObjects
         public decimal ClosingBalance => OpeningBalance + TotalCredits - TotalDebits;
 
 
-        //private BindingList<Account> _accounts;
-        //[NotMapped]
-        //[Browsable(false)]
-        //public BindingList<Account> Accounts => _accounts ?? (_accounts = HandyFunctions.GetValidTransactionAccounts(ObjectSpace));
-
+        
         public override void OnLoaded()
         {
             // we need it loaded so it displays in the combo box

@@ -21,6 +21,8 @@ using DevExpress.Persistent.Validation;
 using DevExpress.XtraReports.UI;
 using LumenWorks.Framework.IO.Csv;
 using SBD.GL.Module.BusinessObjects;
+using SBD.GL.Module.BusinessObjects.Accounts;
+using SBD.GL.Module.BusinessObjects.Imports;
 
 namespace SBD.GL.Module.Win.Controllers
 {
@@ -49,7 +51,7 @@ namespace SBD.GL.Module.Win.Controllers
             base.OnDeactivated();
         }
 
-        private void actImport_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void actImportNab_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             var openFileDialog1 = new OpenFileDialog
             {
@@ -106,7 +108,7 @@ namespace SBD.GL.Module.Win.Controllers
 
             var bi = objectSpace.GetObject<BankImport>(bankImport);
 
-            HandyFunctions.RunBankRules(bi, objectSpace);
+            BankRuleFunctions.RunBankRules(bi, objectSpace);
 
 
             var createdDetailView = Application.CreateDetailView(objectSpace, bi);

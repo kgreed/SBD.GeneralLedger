@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.actApplyRules = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
-            this.actClearAccounts = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actClearAMatches = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actPost = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
             // actApplyRules
@@ -38,29 +38,37 @@
             this.actApplyRules.Caption = "Apply Rules";
             this.actApplyRules.ConfirmationMessage = null;
             this.actApplyRules.Id = "Apply Rules";
-            this.actApplyRules.ToolTip = null;
+            this.actApplyRules.ImageName = "AddQuery";
+            this.actApplyRules.QuickAccess = true;
+            this.actApplyRules.Shortcut = "Control+Shift+A";
+            this.actApplyRules.ToolTip = "Apply rules to match Accounts to import lines";
             this.actApplyRules.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actApplyRules_Execute);
             // 
-            // actClearAccounts
+            // actClearAMatches
             // 
-            this.actClearAccounts.Caption = "Clear Accounts";
-            this.actClearAccounts.ConfirmationMessage = null;
-            this.actClearAccounts.Id = "ClearAccounts";
-            this.actClearAccounts.ToolTip = null;
-            this.actClearAccounts.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actClearAccounts_Execute);
+            this.actClearAMatches.Caption = "Clear Matches";
+            this.actClearAMatches.ConfirmationMessage = null;
+            this.actClearAMatches.Id = "ClearMatches";
+            this.actClearAMatches.ImageName = "DeleteQuery";
+            this.actClearAMatches.QuickAccess = true;
+            this.actClearAMatches.Shortcut = "Control+Shift+D";
+            this.actClearAMatches.ToolTip = "Clear account matches from import lines";
+            this.actClearAMatches.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actClearAccounts_Execute);
             // 
             // actPost
             // 
             this.actPost.Caption = "Post";
             this.actPost.ConfirmationMessage = null;
             this.actPost.Id = "Post";
-            this.actPost.ToolTip = null;
+            this.actPost.ImageName = "EditQuery";
+            this.actPost.Shortcut = "Control+Shift+E";
+            this.actPost.ToolTip = "Post Matched Import Lines to create account transactions";
             this.actPost.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actPost_Execute);
             // 
             // BankImportController
             // 
             this.Actions.Add(this.actApplyRules);
-            this.Actions.Add(this.actClearAccounts);
+            this.Actions.Add(this.actClearAMatches);
             this.Actions.Add(this.actPost);
 
         }
@@ -68,7 +76,7 @@
         #endregion
 
         private DevExpress.ExpressApp.Actions.SimpleAction actApplyRules;
-        private DevExpress.ExpressApp.Actions.SimpleAction actClearAccounts;
+        private DevExpress.ExpressApp.Actions.SimpleAction actClearAMatches;
         private DevExpress.ExpressApp.Actions.SimpleAction actPost;
     }
 }

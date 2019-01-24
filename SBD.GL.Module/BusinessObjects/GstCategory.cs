@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 
@@ -7,6 +8,8 @@ namespace SBD.GL.Module.BusinessObjects
 {
     [NavigationItem("03 Config")]
     [DefaultProperty("Code")]
+    [XafDisplayName("Tax Categories")]
+    [ImageName("BO_Category")]
     public class GstCategory 
     {
         [Browsable(false)]

@@ -10,6 +10,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
 using DevExpress.ExpressApp.EF.Updating;
 using DevExpress.Persistent.BaseImpl.EF;
+using SBD.GL.Module.BusinessObjects.Accounts;
+using SBD.GL.Module.BusinessObjects.Imports;
+using SBD.GL.Module.BusinessObjects.Transactions;
 using SQLite.CodeFirst;
 
 namespace SBD.GL.Module.BusinessObjects
@@ -70,13 +73,20 @@ namespace SBD.GL.Module.BusinessObjects
                 .WithMany(x => x.Children)
                 .HasForeignKey(x => x.Parent_Id);
 
-            modelBuilder.Entity<Transaction>().HasKey(x => x.Id).Property(x => x.TranHeader_Id).IsRequired();
+         //   modelBuilder.Entity<Transaction>().HasKey(x => x.Id).Property(x => x.TranHeader_Id).IsRequired();
 
 
+            modelBuilder.Entity<TranHeader>()
+                .HasMany(x=>x.Transactions)
+                .WithRequired(x=>x.TranHeader)
+                .WillCascadeOnDelete(true);
 
+            modelBuilder.Entity<BankImport>()
+                .HasMany(x=> x.Lines)
+                .WithRequired(x=>x.BankImport)
+                .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<BankImportLine>()
-                .HasOptional(x => x.MatchingHeader);
+          //  modelBuilder.Entity<BankImportLine>().HasOptional(x => x.MatchingHeader);
 
 
 
@@ -92,38 +102,11 @@ namespace SBD.GL.Module.BusinessObjects
         {
             protected override void Seed(GLDbContext context)
             {
-                var balanceSheetGst = context.GstCategories.Add(new GstCategory { Code = "N-T", Percent = 0 });
-                var pandlGst = context.GstCategories.Add(new GstCategory { Code = "GST", Percent = 10 });
-
-                for (int i = (int)GLCategoryEnum.Asset; i <= (int)GLCategoryEnum.OtherIncome; i++)
-                {
-                    var IsBalSheet = IsBalanceSheet(i);
-                    var cat = context.GLCategories.Add(new GLCategory { Category = i, IsBalanceSheet = IsBalSheet });
-                    var gstCategory = IsBalSheet ? balanceSheetGst : pandlGst;
-                    var account = new Account { Code = $"0{i}", Category = cat, GstCategory = gstCategory };
-                    var child1 = new Account { Code = $"0{i}-0100", Category = cat, GstCategory = gstCategory, Parent = account };
-                    account.Children.Add(child1);
-                    var child2 = new Account { Code = $"0{i}-0200", Category = cat, GstCategory = gstCategory, Parent = account };
-                    account.Children.Add(child2);
-                    var child3 = new Account { Code = $"0{i}-0300", Category = cat, GstCategory = gstCategory, Parent = account };
-                    account.Children.Add(child3);
-
-                    context.Accounts.Add(account);
-                    context.Accounts.Add(child1);
-                    context.Accounts.Add(child2);
-                    context.Accounts.Add(child3);
-
-                }
+                
                 base.Seed(context);
             }
 
-            private bool IsBalanceSheet(int i)
-            {
-                var cat = (GLCategoryEnum)i;
-                return cat == GLCategoryEnum.Asset
-                       || cat == GLCategoryEnum.Liability
-                       || cat == GLCategoryEnum.Equity;
-            }
+           
 
         }
     }

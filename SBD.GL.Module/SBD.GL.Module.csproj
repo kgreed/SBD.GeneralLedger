@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SBD.GL.Module</RootNamespace>
     <AssemblyName>SBD.GL.Module</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,33 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EasyTest|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\EasyTest\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -134,22 +162,22 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
     <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
-    <Compile Include="BusinessObjects\Imports\ActionInPopupController.cs">
+    <Compile Include="BusinessObjects\Imports\BankRuleActionInPopupController.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessObjects\Imports\BankImport.cs" />
     <Compile Include="BusinessObjects\Imports\BankImportLine.cs" />
-    <Compile Include="BusinessObjects\Imports\BankImportLineController2.cs">
+    <Compile Include="BusinessObjects\Imports\BankImportLinePopUpActionController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLineController2.Designer.cs">
-      <DependentUpon>BankImportLineController2.cs</DependentUpon>
+    <Compile Include="BusinessObjects\Imports\BankImportLinePopUpActionController.Designer.cs">
+      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLineController.cs">
+    <Compile Include="BusinessObjects\Imports\BankImportLineMakeRuleController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLineController.Designer.cs">
-      <DependentUpon>BankImportLineController.cs</DependentUpon>
+    <Compile Include="BusinessObjects\Imports\BankImportLineMakeRuleController.Designer.cs">
+      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Imports\BankImportRule.cs" />
     <Compile Include="BusinessObjects\BasicBo.cs" />
@@ -170,7 +198,6 @@
     <Compile Include="BusinessObjects\Imports\BankImportRuleController.Designer.cs">
       <DependentUpon>BankImportRuleController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\Imports\ShowPopupController.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
       <SubType>Component</SubType>
@@ -179,6 +206,10 @@
       <DependentUpon>TranHeaderController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Transactions\TranHeader.cs" />
+    <Compile Include="BusinessObjects\Accounts\AccountFunctions.cs" />
+    <Compile Include="BusinessObjects\Imports\BankRuleFunctions.cs" />
+    <Compile Include="HandyDefaults.cs" />
+    <Compile Include="HandySettings.cs" />
     <Compile Include="InstanceWideMemvars.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
     <Compile Include="BusinessObjects\Accounts\IHCategoryController.cs">
@@ -189,9 +220,8 @@
     </Compile>
     <Compile Include="BusinessObjects\Job.cs" />
     <Compile Include="BusinessObjects\Transactions\Transaction.cs" />
-    <Compile Include="HandyControllerFunctions.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
-    <Compile Include="HandyFunctions.cs" />
+    <Compile Include="HandyDataFunctions.cs" />
     <Compile Include="BusinessObjects\Accounts\H2Category.cs" />
     <Compile Include="Migrations\201901160245272_InitialCreate.cs" />
     <Compile Include="Migrations\201901160245272_InitialCreate.Designer.cs">
@@ -231,11 +261,11 @@
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
       <DependentUpon>BankImportController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController2.resx">
-      <DependentUpon>BankImportLineController2.cs</DependentUpon>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLinePopUpActionController.resx">
+      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineController.resx">
-      <DependentUpon>BankImportLineController.cs</DependentUpon>
+    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineMakeRuleController.resx">
+      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportRuleController.resx">
       <DependentUpon>BankImportRuleController.cs</DependentUpon>

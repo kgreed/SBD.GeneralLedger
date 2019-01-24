@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects
@@ -9,6 +10,8 @@ namespace SBD.GL.Module.BusinessObjects
 
     [NavigationItem("01 Main")]
     [DefaultProperty("CategoryName")]
+    [XafDisplayName("Account Categories")]
+    [ImageName("BO_Category")]
     public class GLCategory{
 
         [Key]

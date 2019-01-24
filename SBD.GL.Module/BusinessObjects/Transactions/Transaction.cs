@@ -3,20 +3,21 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
-using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using SBD.GL.Module.Annotations;
+using SBD.GL.Module.BusinessObjects.Accounts;
 
-
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Transactions
 {
   
     [NavigationItem("01 Main")]
     [DefaultListViewOptions(true, NewItemRowPosition.Bottom)]
     [DefaultProperty("Summary")]
+    [XafDisplayName("Transaction Details")]
+    [ImageName("BO_List")]
     [VisibleInReports]
     public class Transaction : BasicBo, IObjectSpaceLink, ICashbookLine , INotifyPropertyChanged
     {
@@ -52,7 +53,7 @@ namespace SBD.GL.Module.BusinessObjects
         [Required]
         public virtual TranHeader TranHeader { get; set; }
 
-        public virtual Job job { get; set; }
+        public virtual Job Job { get; set; }
 
         [Browsable(false)]
         public IObjectSpace ObjectSpace { get; set; }

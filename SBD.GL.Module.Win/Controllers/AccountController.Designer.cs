@@ -29,24 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.actImport = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actImportNab = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
-            // actImport
+            // actImportNab
             // 
-            this.actImport.Caption = "Import CSV";
-            this.actImport.ConfirmationMessage = null;
-            this.actImport.Id = "ImportCSV";
-            this.actImport.ToolTip = null;
-            this.actImport.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actImport_Execute);
+            this.actImportNab.Caption = "Import NAB CSV";
+            this.actImportNab.ConfirmationMessage = null;
+            this.actImportNab.Id = "ImportCSV";
+            this.actImportNab.ImageName = "ImageImport";
+            this.actImportNab.QuickAccess = true;
+            this.actImportNab.Shortcut = "Control+Shift+I";
+            this.actImportNab.TargetObjectsCriteria = "Header = false";
+            this.actImportNab.ToolTip = "Import from a National Bank Transaction file";
+            this.actImportNab.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actImportNab_Execute);
             // 
-            // TranHeaderController
+            // AccountController
             // 
-            this.Actions.Add(this.actImport);
+            this.Actions.Add(this.actImportNab);
 
         }
 
         #endregion
 
-        private DevExpress.ExpressApp.Actions.SimpleAction actImport;
+        private DevExpress.ExpressApp.Actions.SimpleAction actImportNab;
     }
 }

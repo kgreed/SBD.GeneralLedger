@@ -1,10 +1,9 @@
 ﻿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.SystemModule;
-using DevExpress.Persistent.Base.General;
-using SBD.GL.Module.BusinessObjects;
+using SBD.GL.Module.BusinessObjects.Imports;
 
-namespace SBD.GL.Module.Controllers
+namespace SBD.GL.Module.BusinessObjects.Transactions
 {
     public partial class TranHeaderController : ViewController
     {

@@ -44,7 +44,7 @@ namespace SBD.GL.Win {
             try {
 
                 // access db so it is created here.
-                HandyFunctions.EnsureDatabaseIsCreated();
+                HandyDataFunctions.EnsureDatabaseIsCreated();
                 // end of modification
 
                 winApplication.Setup();

@@ -17,6 +17,7 @@ using System.Data.Entity;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using SBD.GL.Module.BusinessObjects;
 using DevExpress.ExpressApp.ReportsV2;
+using SBD.GL.Module.BusinessObjects.Accounts;
 using SBD.GL.Module.Reports.PandL;
 using BalanceSheetReport = SBD.GL.Module.Reports.BalanceSheet.BalanceSheetReport;
 
@@ -36,7 +37,7 @@ namespace SBD.GL.Module {
         public GLModule() {
             InitializeComponent();
 			AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.EF.Analysis));
-			AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.EF.H2Category));
+			AdditionalExportedTypes.Add(typeof(H2Category));
 
            
 

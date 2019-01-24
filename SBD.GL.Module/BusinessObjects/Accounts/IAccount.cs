@@ -1,4 +1,4 @@
-﻿namespace SBD.GL.Module.BusinessObjects
+﻿namespace SBD.GL.Module.BusinessObjects.Accounts
 {
     public interface IAccount
     {

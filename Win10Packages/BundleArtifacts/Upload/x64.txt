@@ -1,0 +1,6 @@
+MainPackage=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0_x64.appx
+SymbolPackage=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0\SBD.GL.Packages_1.0.1.0_x64.appxsym
+ResourcePack=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0_scale-100.appx
+ResourcePack=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0_scale-125.appx
+ResourcePack=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0_scale-150.appx
+ResourcePack=D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.1.0_scale-400.appx

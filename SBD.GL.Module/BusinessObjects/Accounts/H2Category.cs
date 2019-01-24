@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Linq;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.DC;
-using DevExpress.Persistent.Base;
-using DevExpress.Persistent.Validation;
 using DevExpress.Persistent.Base.General;
-namespace DevExpress.Persistent.BaseImpl.EF
+using DevExpress.Persistent.Validation;
+
+namespace SBD.GL.Module.BusinessObjects.Accounts
 {
      
     public class H2Category : IHCategory , IXafEntityObject, IObjectSpaceLink

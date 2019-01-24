@@ -13,6 +13,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using SBD.GL.Module.BusinessObjects.Transactions;
 
 namespace SBD.GL.Module.BusinessObjects.Imports
 {
@@ -48,7 +49,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
             var bankImport = e.CurrentObject as BankImport;
 
-            HandyFunctions.RunBankRules(bankImport,View.ObjectSpace);
+            BankRuleFunctions.RunBankRules(bankImport,View.ObjectSpace);
             View.ObjectSpace.CommitChanges();
             View.ObjectSpace.Refresh();
         }

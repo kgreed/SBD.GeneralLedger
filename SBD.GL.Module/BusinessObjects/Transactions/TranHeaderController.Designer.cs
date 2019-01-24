@@ -1,4 +1,4 @@
-﻿namespace SBD.GL.Module.Controllers
+﻿namespace SBD.GL.Module.BusinessObjects.Transactions
 {
     partial class TranHeaderController
     {

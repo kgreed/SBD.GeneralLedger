@@ -2,7 +2,7 @@
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.Persistent.Base.General;
 
-namespace SBD.GL.Module.Controllers
+namespace SBD.GL.Module.BusinessObjects.Accounts
 {
     public partial class ICategoryController : ViewController
     {

@@ -41,40 +41,45 @@
             this.actAddExpenseAccount.Category = "Edit";
             this.actAddExpenseAccount.ConfirmationMessage = null;
             this.actAddExpenseAccount.Id = "Add Expense Account";
+            this.actAddExpenseAccount.Shortcut = "Control+Shift+x";
             this.actAddExpenseAccount.ToolTip = null;
-            this.actAddExpenseAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actAddExpenseAccount_Execute);
+            this.actAddExpenseAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.ActAddExpenseAccount_Execute);
             // 
             // actAddLiabilityAccount
             // 
             this.actAddLiabilityAccount.Caption = "Add Liability Account";
             this.actAddLiabilityAccount.ConfirmationMessage = null;
             this.actAddLiabilityAccount.Id = "Add Liability Account";
+            this.actAddLiabilityAccount.Shortcut = "Control+Shift+b";
             this.actAddLiabilityAccount.ToolTip = null;
-            this.actAddLiabilityAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actAddLiabilityAccount_Execute);
+            this.actAddLiabilityAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.ActAddLiabilityAccount_Execute);
             // 
             // actAddAssetAccount
             // 
             this.actAddAssetAccount.Caption = "Add Asset Account";
             this.actAddAssetAccount.ConfirmationMessage = null;
             this.actAddAssetAccount.Id = "Add Asset Account";
+            this.actAddAssetAccount.Shortcut = "Control+Shift+S";
             this.actAddAssetAccount.ToolTip = null;
-            this.actAddAssetAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actAddAssetAccount_Execute);
+            this.actAddAssetAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.ActAddAssetAccount_Execute);
             // 
             // actAddIncomeAccount
             // 
             this.actAddIncomeAccount.Caption = "Add Income Account";
             this.actAddIncomeAccount.ConfirmationMessage = null;
             this.actAddIncomeAccount.Id = "Add Income Account";
-            this.actAddIncomeAccount.ToolTip = null;
-            this.actAddIncomeAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actAddIncomeAccount_Execute);
+            this.actAddIncomeAccount.Shortcut = "Control+Shift+N";
+            this.actAddIncomeAccount.ToolTip = "Add Income Account";
+            this.actAddIncomeAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.ActAddIncomeAccount_Execute);
             // 
             // actAddCogsAccount
             // 
-            this.actAddCogsAccount.Caption = "Add COGS Account";
+            this.actAddCogsAccount.Caption = "Add COS Account";
             this.actAddCogsAccount.ConfirmationMessage = null;
-            this.actAddCogsAccount.Id = "Add COGS Account";
-            this.actAddCogsAccount.ToolTip = null;
-            this.actAddCogsAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actAddCogsAccount_Execute);
+            this.actAddCogsAccount.Id = "Add COS Account";
+            this.actAddCogsAccount.Shortcut = "Control+Shift+l";
+            this.actAddCogsAccount.ToolTip = "Add Cost of Sales Account";
+            this.actAddCogsAccount.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.ActAddCogsAccount_Execute);
             // 
             // BankImportRuleController
             // 

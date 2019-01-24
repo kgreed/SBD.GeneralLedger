@@ -41,33 +41,33 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             base.OnDeactivated();
         }
 
-        private void actAddExpenseAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void ActAddExpenseAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             AddAccount(e,GLCategoryEnum.Expense);
         }
 
         private void AddAccount(SimpleActionExecuteEventArgs e, GLCategoryEnum type)
         {
-            HandyFunctions.AddAccount(e.CurrentObject as BankImportRule, type );
+            BankRuleFunctions.AddAccount(e.CurrentObject as BankImportRule, type );
          
         }
 
-        private void actAddLiabilityAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void ActAddLiabilityAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             AddAccount(e, GLCategoryEnum.Liability);
         }
 
-        private void actAddAssetAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void ActAddAssetAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             AddAccount(e, GLCategoryEnum.Asset);
         }
 
-        private void actAddIncomeAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void ActAddIncomeAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             AddAccount(e, GLCategoryEnum.Income);
         }
 
-        private void actAddCogsAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void ActAddCogsAccount_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             AddAccount(e, GLCategoryEnum.CostOfSales);
         }

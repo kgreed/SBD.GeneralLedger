@@ -6,18 +6,17 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
-
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Base.General;
 using DevExpress.Persistent.Validation;
-using DevExpress.PivotGrid.SliceQueryEngine;
 
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Accounts
 {
     [NavigationItem("01 Main")]
     [DefaultProperty("Code")]
     [VisibleInReports]
-  
+    [XafDisplayName("Accounts")]
+    [ImageName("BO_Category")]
     [Appearance("NotIsRoot", Criteria = "Parent_Id != null", AppearanceItemType = "ViewItem", TargetItems = "GlCategory", Enabled = false, Context = "DetailView")]
 
     public class Account : BasicBo, IHCategory, IObjectSpaceLink, IAccount

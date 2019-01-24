@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects
 {
     [NavigationItem("01 Main")]
+    [XafDisplayName("Jobs")]
+    [ImageName("BO_KPI_Scorecard")]
     public class Job : BasicBo
     {
         [Browsable(false)]

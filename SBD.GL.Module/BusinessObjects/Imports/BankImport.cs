@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
-using DevExpress.Xpo;
+using SBD.GL.Module.BusinessObjects.Accounts;
 
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Imports
 {
     [NavigationItem("02 Imports")]
+    [XafDisplayName("Bank Imports")]
+    [ImageName("BO_Transition")]
     public class BankImport
     {
         [System.ComponentModel.DataAnnotations.Key]
@@ -16,7 +19,7 @@ namespace SBD.GL.Module.BusinessObjects
         }
 
         public virtual Account Account { get; set; }
-        [Aggregated]
+        [DevExpress.Xpo.Aggregated]
         public virtual List<BankImportLine> Lines { get; set; }
         public string FileName { get; set; }
         public DateTime FileDate { get; set; }

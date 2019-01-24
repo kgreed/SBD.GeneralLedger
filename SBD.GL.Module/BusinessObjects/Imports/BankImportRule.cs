@@ -3,13 +3,18 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
 using SBD.GL.Module.Annotations;
+using SBD.GL.Module.BusinessObjects.Accounts;
 
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Imports
 {
     [NavigationItem("02 Imports")]
-    public class BankImportRule: IObjectSpaceLink, INotifyPropertyChanged
+    [XafDisplayName("Bank Import Rules")]
+    [ImageName("BO_WorkflowDefinition")]
+    public class BankImportRule: BasicBo, IObjectSpaceLink, INotifyPropertyChanged 
     {
         [Key]
         public int Id { get; set; }
@@ -40,12 +45,31 @@ namespace SBD.GL.Module.BusinessObjects
         [Browsable(false)]
         public IObjectSpace ObjectSpace { get; set; }
 
+
+        [Browsable(false)]
+        [RuleFromBoolProperty("RuleNameOk", DefaultContexts.Save, "Enter a Rule Name.")]
+        public bool RuleNameOk => RuleName.Length > 0;
+
+        [NotMapped]
+        public bool ApplyOnAdd { get; set; }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override void OnSaving()
+        {
+            if (ApplyOnAdd)
+            {
+                
+            }
+
+            base.OnSaving();
         }
     }
 }

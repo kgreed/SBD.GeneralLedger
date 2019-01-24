@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects
 {
     [NavigationItem("01 Main")]
+    [XafDisplayName("Cards")]
+    [ImageName("BO_Contact")]
     public class Card : BasicBo
     {
         [Browsable(false)]

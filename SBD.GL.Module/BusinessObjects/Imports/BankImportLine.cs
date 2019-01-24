@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using DevExpress.Persistent.Base;
+using SBD.GL.Module.BusinessObjects.Accounts;
+using SBD.GL.Module.BusinessObjects.Transactions;
 
-namespace SBD.GL.Module.BusinessObjects
+namespace SBD.GL.Module.BusinessObjects.Imports
 {
     public class BankImportLine
     {
