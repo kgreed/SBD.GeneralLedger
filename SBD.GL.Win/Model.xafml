@@ -1,7 +1,7 @@
-﻿<Application Logo="ExpressAppLogo">
+﻿<Application Logo="blade_sbd_compact_icon_stacked_wordmark">
 	<Options UIType="TabbedMDI" FormStyle="Ribbon" />
 	<NavigationItems NavigationStyle="Accordion" ShowImages="True" DefaultChildItemsDisplayStyle="List"/>
-	<Options ShowTabImage="False">
-		<LayoutManagerOptions EnableLayoutGroupImages="False" />
+	<Options ShowTabImage="True">
+		<LayoutManagerOptions EnableLayoutGroupImages="True" />
 	</Options>
 </Application>

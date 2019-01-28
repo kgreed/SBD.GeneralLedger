@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SBD.GL.Win")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Software by Design Aust Pty Ltd")]
 [assembly: AssemblyProduct("SBD.GL.Win")]
 [assembly: AssemblyCopyright("Copyright © 2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("JobTalk")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

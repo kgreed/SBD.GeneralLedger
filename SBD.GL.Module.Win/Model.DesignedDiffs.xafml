@@ -1,2 +1,7 @@
-﻿<?xml version="1.0" ?>
-<Application />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Company="www.softwarebydesign.com.au" Copyright="Copyright (C) 2018 {0:Company}" Description="General ledger with bank import reconciliation" >
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="18.2.5.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="18.2.5.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Windows.Forms;
 
 using DevExpress.ExpressApp;
@@ -21,9 +22,20 @@ namespace SBD.GL.Win {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             EditModelPermission.AlwaysGranted = System.Diagnostics.Debugger.IsAttached;
-            if(Tracing.GetFileLocationFromSettings() == DevExpress.Persistent.Base.FileLocation.CurrentUserApplicationDataFolder) {
-                Tracing.LocalUserAppDataPath = Application.LocalUserAppDataPath;
+            //if(Tracing.GetFileLocationFromSettings() == DevExpress.Persistent.Base.FileLocation.CurrentUserApplicationDataFolder) {
+            //    Tracing.LocalUserAppDataPath = Application.LocalUserAppDataPath;
+            //}
+            string filePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+
+            //var  filePath = Application.LocalUserAppDataPath;
+            Tracing.LogName = Path.Combine(filePath, GLWindowsFormsApplication.APP_NAME, "logs", "eXpressAppFramework");
+
+            if (!Directory.Exists(Path.GetDirectoryName(Tracing.LogName)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Tracing.LogName));
             }
+         
+
             Tracing.Initialize();
             GLWindowsFormsApplication winApplication = new GLWindowsFormsApplication();
             // Refer to the https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112680.aspx help article for more details on how to provide a custom splash form.
