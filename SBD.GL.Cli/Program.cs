@@ -6,7 +6,7 @@ using DevExpress.Accessibility;
 using SBD.GL.Win;
 
 using DevExpress.ExpressApp.Validation;
-using DevExpress.ExpressApp.Validation.Win;
+//using DevExpress.ExpressApp.Validation.Win;
 //using DevExpress.ExpressApp.Xpo;
  
 
