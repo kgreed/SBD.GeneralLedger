@@ -216,7 +216,6 @@
     <Compile Include="BusinessObjects\Imports\BankRuleFunctions.cs" />
     <Compile Include="HandyDefaults.cs" />
     <Compile Include="HandySettings.cs" />
-    <Compile Include="InstanceWideMemvars.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
     <Compile Include="BusinessObjects\Accounts\IHCategoryController.cs">
       <SubType>Component</SubType>
@@ -262,6 +261,7 @@
     <Compile Include="Reports\PandL\PandLReportData.cs" />
     <Compile Include="Reports\PandL\PandLReportDto.cs" />
     <Compile Include="Reports\BalanceSheet\BalanceSheetData.cs" />
+    <Compile Include="SiteCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
@@ -287,7 +287,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\BalanceSheet\BalanceSheetReport.resx">
       <DependentUpon>BalanceSheetReport.cs</DependentUpon>
     </EmbeddedResource>

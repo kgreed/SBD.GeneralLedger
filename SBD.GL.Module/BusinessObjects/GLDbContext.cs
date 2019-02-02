@@ -8,6 +8,7 @@ using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
+using System.IO;
 using DevExpress.ExpressApp.EF.Updating;
 using DevExpress.Persistent.BaseImpl.EF;
 using SBD.GL.Module.BusinessObjects.Accounts;
@@ -20,10 +21,16 @@ namespace SBD.GL.Module.BusinessObjects
     public class GLDbContext : DbContext
     {
         public GLDbContext(String connectionString)
-            : base(new SQLiteConnection() { ConnectionString = connectionString }, true)
+            : base(new SQLiteConnection() { ConnectionString = MyConnectionString() }, true)
         {
            // Database.SetInitializer(new GlDBInitializer());
            // this.Configuration.ProxyCreationEnabled = false;
+        }
+
+        public static string MyConnectionString()
+        {
+            return SiteCache.Instance.ConnectionString;
+           
         }
 
         public GLDbContext(DbConnection connection)
@@ -34,8 +41,7 @@ namespace SBD.GL.Module.BusinessObjects
         public GLDbContext()
             : base(new SQLiteConnection()
             {
-                ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"]
-                    .ConnectionString
+                ConnectionString =MyConnectionString()
             }, true)
         {
 

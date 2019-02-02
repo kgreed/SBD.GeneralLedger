@@ -41,11 +41,11 @@ namespace SBD.GL.Module.BusinessObjects.Transactions
 
         public override void OnCreated()
         {
-            if ( InstanceWideMemvars.Instance.EntryDate == Convert.ToDateTime(null) )
+            if ( SiteCache.Instance.EntryDate == Convert.ToDateTime(null) )
             {
-                InstanceWideMemvars.Instance.EntryDate = DateTime.Now;
+                SiteCache.Instance.EntryDate = DateTime.Now;
             }
-            Date = InstanceWideMemvars.Instance.EntryDate;
+            Date = SiteCache.Instance.EntryDate;
      
             base.OnCreated();
         }
@@ -54,7 +54,7 @@ namespace SBD.GL.Module.BusinessObjects.Transactions
         {
             if (Id == 0) //new
             {
-                InstanceWideMemvars.Instance.EntryDate = Date;
+                SiteCache.Instance.EntryDate = Date;
 
             }
             base.OnSaving();

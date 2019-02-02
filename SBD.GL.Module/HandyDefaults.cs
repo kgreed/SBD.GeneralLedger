@@ -6,6 +6,8 @@ namespace SBD.GL.Module
 {
     public static class HandyDefaults
     {
+        public static string APP_NAME => "SBD.GL";
+
         public static GstCategory DefaultGstCategory(IObjectSpace objectSpace, bool IsPandL)
         {
             var defaultCode = IsPandL ? "GST" : "N-T";

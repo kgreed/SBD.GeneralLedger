@@ -1,1 +1,1 @@
-D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.20.0\SBD.GL.Packages_1.0.20.0_x64.msixbundle
+D:\dev\SBD.GeneralLedger\Win10Packages\bin\x64\Release\Upload\SBD.GL.Packages_1.0.31.0\SBD.GL.Packages_1.0.31.0_x64.msixbundle

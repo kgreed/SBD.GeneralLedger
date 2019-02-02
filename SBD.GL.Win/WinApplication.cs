@@ -8,12 +8,13 @@ using System.Data.Common;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using SBD.GL.Module;
 
 namespace SBD.GL.Win {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/DevExpressExpressAppWinWinApplicationMembersTopicAll.aspx
     public partial class GLWindowsFormsApplication : WinApplication
     {
-        public static string APP_NAME => "SBD.GL";
+       
 
         #region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
         static GLWindowsFormsApplication() {
@@ -21,6 +22,9 @@ namespace SBD.GL.Win {
             DevExpress.Persistent.Base.PasswordCryptographer.SupportLegacySha512 = false;
 			DevExpress.ExpressApp.Utils.ImageLoader.Instance.UseSvgImages = true;
         }
+
+        public string PreCompileOutputDirectory => Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "PreCompile");
+
         private void InitializeDefaults() {
             LinkNewObjectToParentImmediately = false;
             OptimizedControllersCreation = true;
@@ -36,36 +40,72 @@ namespace SBD.GL.Win {
 
         //public string FilePath => Path.GetDirectoryName(GetType().Assembly.Location);
 
-          string filePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+        private string FilePath = GetFilePath();
+
+        public static string GetFilePath()
+        {
+            var sPath = "";
+            try
+            {
+                sPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+            }
+            catch (Exception e)
+            {
+                sPath= Application.LocalUserAppDataPath;
+                //Console.WriteLine(e);
+                //throw;
+            }
+
+             
+            SiteCache.Instance.LocalPath = sPath;
+            return sPath;
+
+        }
+
         //string filePath = Application.LocalUserAppDataPath;
         // paste from  http://blog.delegate.at/2018/04/15/how-to-use-the-desktop-bridge-to-create-an-appx-package-for-xaf.html
 
         protected override string GetDcAssemblyFilePath()
-            => Path.Combine(filePath, ApplicationName, DcAssemblyFileName);
+            => Path.Combine(FilePath, ApplicationName, DcAssemblyFileName);
 
         protected override string GetModelAssemblyFilePath()
-            => Path.Combine(filePath, ApplicationName, ModelAssemblyFileName);
+            => Path.Combine(FilePath, ApplicationName, ModelAssemblyFileName);
 
         protected override string GetModelCacheFileLocationPath()
-            => Path.Combine(filePath, ApplicationName);
+            => Path.Combine(FilePath, ApplicationName);
 
         protected override string GetModulesVersionInfoFilePath()
-            => Path.Combine(filePath, ApplicationName, ModulesVersionInfoFileName);
+            => Path.Combine(FilePath, ApplicationName, ModulesVersionInfoFileName);
 
         protected override void OnCustomGetUserModelDifferencesPath(CustomGetUserModelDifferencesPathEventArgs args)
-            => args.Path = Path.Combine(filePath, ApplicationName);
+            => args.Path = Path.Combine(FilePath, ApplicationName);
 
         
         // end paste 
 
 
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
-			if(args.Connection != null) {
-				args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, (DbConnection)args.Connection));
-			}
-			else {
-				args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, args.ConnectionString));
-			}
+
+
+            //if(args.Connection != null)
+            //         {
+            //             Console.WriteLine(args.Connection);
+            //             Console.WriteLine(args.ConnectionString);
+
+            //             MessageBox.Show(args.ConnectionString);
+
+            //             args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, (DbConnection)args.Connection));
+            //}
+            //else
+            //         {
+            //             Console.WriteLine(args.Connection);
+            //             Console.WriteLine(args.ConnectionString);
+            //	args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, args.ConnectionString));
+            //}
+            var connectionString = SiteCache.Instance.ConnectionString;
+            args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null,
+                connectionString));
+
             args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
         }
         private void GLWindowsFormsApplication_CustomizeLanguagesList(object sender, CustomizeLanguagesListEventArgs e) {

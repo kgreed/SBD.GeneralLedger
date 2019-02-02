@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4" IgnorableNamespaces="uap mp rescap uap4">
-  <Identity Name="JobTalk.SBDGeneralLedger" Publisher="CN=23AA2821-941B-42F4-A1AB-6252DC1FE5BB" Version="1.0.20.0" />
+  <Identity Name="JobTalk.SBDGeneralLedger" Publisher="CN=23AA2821-941B-42F4-A1AB-6252DC1FE5BB" Version="1.0.31.0" />
   <Properties>
     <DisplayName>SBD General Ledger</DisplayName>
     <PublisherDisplayName>JobTalk</PublisherDisplayName>
