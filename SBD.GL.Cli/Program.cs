@@ -44,7 +44,8 @@ namespace SBD.GL.Cli
                   //  winApplication.Modules.Add(new InlineEditFormsWindowsFormsModule());
                   try
                   {
-                      winApplication.Setup();
+                     winApplication.SetupLocalPath(winApplication.PreCompileOutputDirectory);
+                     winApplication.Setup();
                     }
                   catch (Exception e)
                   {

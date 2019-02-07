@@ -36,31 +36,35 @@ namespace SBD.GL.Win {
 			InitializeDefaults();
         }
 
-        // public static string FilePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+       
 
-        //public string FilePath => Path.GetDirectoryName(GetType().Assembly.Location);
-
-        private string FilePath = GetFilePath();
-
-        public static string GetFilePath()
+        public void SetupLocalPath(string preCompileOutputDirectory)
         {
-            var sPath = "";
+            if (preCompileOutputDirectory.Length > 0)
+            {
+                SiteCache.Instance.LocalPath = preCompileOutputDirectory;
+            }
+            else
+            {
+                Console.WriteLine("here");
+                SiteCache.Instance.LocalPath = GetLocalPath();
+            }
+        }
+
+        private static string GetLocalPath()
+        {
             try
             {
-                sPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+               return Windows.Storage.ApplicationData.Current.LocalFolder.Path; // For Desktop Bridge
             }
-            catch (Exception e)
+            catch (InvalidOperationException e)
             {
-                sPath= Application.LocalUserAppDataPath;
-                //Console.WriteLine(e);
-                //throw;
+                
+                return Application.LocalUserAppDataPath;  // for .Win project
             }
-
-             
-            SiteCache.Instance.LocalPath = sPath;
-            return sPath;
-
         }
+
+        private string FilePath => SiteCache.Instance.LocalPath;
 
         //string filePath = Application.LocalUserAppDataPath;
         // paste from  http://blog.delegate.at/2018/04/15/how-to-use-the-desktop-bridge-to-create-an-appx-package-for-xaf.html

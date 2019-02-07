@@ -28,22 +28,25 @@ namespace SBD.GL.Win {
             //}
          //   string filePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
 
-           var filePath = GLWindowsFormsApplication.GetFilePath();
+            
 
-            //var  filePath = Application.LocalUserAppDataPath;
-            Tracing.LogName = Path.Combine(filePath, HandyDefaults.APP_NAME, "logs", "eXpressAppFramework");
+             
+
+            GLWindowsFormsApplication winApplication = new GLWindowsFormsApplication();
+
+            winApplication.SetupLocalPath("");
+            winApplication.ConnectionString = SiteCache.Instance.ConnectionString;
+
+            Tracing.LogName = Path.Combine(SiteCache.Instance.LocalPath, HandyDefaults.APP_NAME, "logs", "eXpressAppFramework");
 
             if (!Directory.Exists(Path.GetDirectoryName(Tracing.LogName)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(Tracing.LogName));
             }
-         
+
 
             Tracing.Initialize();
-            GLWindowsFormsApplication winApplication = new GLWindowsFormsApplication
-            {
-                ConnectionString = GLDbContext.MyConnectionString()
-            };
+
             // Refer to the https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112680.aspx help article for more details on how to provide a custom splash form.
             //winApplication.SplashScreen = new DevExpress.ExpressApp.Win.Utils.DXSplashScreen("YourSplashImage.png");
 
