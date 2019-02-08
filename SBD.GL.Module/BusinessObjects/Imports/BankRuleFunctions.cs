@@ -1,16 +1,24 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using SBD.GL.Module.BusinessObjects.Accounts;
+using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Win.SystemModule;
 
 namespace SBD.GL.Module.BusinessObjects.Imports
 {
     public static class BankRuleFunctions
     {
-        public static void SaveAndApplyRule(BankImportRule rule)
+        public static void SaveAndApplyRule(BankImport bankImport, BankImportRule rule)
         {
+          
             var os = rule.ObjectSpace;
-            rule.ApplyOnAdd = true;
+            os.CommitChanges();
+
+            ApplyBankRule(bankImport,  rule);
+            bankImport.ObjectSpace.Refresh();
+
         }
 
         public static void AddAccount(BankImportRule rule, GLCategoryEnum type)
@@ -42,47 +50,50 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             var rules = objectSpace.GetObjects<BankImportRule>();
             foreach (var rule in rules)
             {
-                foreach (var line in bankImport.Lines)
-                {
-                    if (!MatchOK(line.Ref1, rule.Ref1))
-                    {
-                        continue;
-                    }
-
-                    if (!MatchOK(line.Ref2, rule.Ref2))
-                    {
-                        continue;
-                    }
-
-                    if (!MatchOK(line.Ref3, rule.Ref3))
-                    {
-                        continue;
-                    }
-
-                    if (!MatchOK(line.Ref4, rule.Ref4))
-                    {
-                        continue;
-                    }
-
-                    if (!MatchOK(line.Ref5, rule.Ref5))
-                    {
-                        continue;
-                    }
-
-                    line.Account = objectSpace.GetObject(rule.ToAccount);
-
-                    if (line.Account != null)
-                    {
-                        objectSpace.ModifiedObjects.Add(line);
-                    }
-                }
-
+                ApplyBankRule(bankImport,  rule);
             }
 
+        }
 
+        public static void ApplyBankRule(BankImport bankImport,  BankImportRule rule)
+        {
+            foreach (var line in bankImport.Lines)
+            {
+                if (!MatchOK(line.Ref1, rule.Ref1))
+                {
+                    continue;
+                }
 
+                if (!MatchOK(line.Ref2, rule.Ref2))
+                {
+                    continue;
+                }
 
+                if (!MatchOK(line.Ref3, rule.Ref3))
+                {
+                    continue;
+                }
 
+                if (!MatchOK(line.Ref4, rule.Ref4))
+                {
+                    continue;
+                }
+
+                if (!MatchOK(line.Ref5, rule.Ref5))
+                {
+                    continue;
+                }
+
+                line.Account = line.ObjectSpace.GetObject(rule.ToAccount);
+                
+                if (line.Account != null)
+                {
+                    line.ObjectSpace.ModifiedObjects.Add(line);
+
+                    Console.WriteLine(line.ObjectSpace.ModifiedObjects.Count);
+                    line.ObjectSpace.CommitChanges();
+                }
+            }
         }
 
 

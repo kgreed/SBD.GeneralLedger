@@ -162,12 +162,6 @@
     <Compile Include="BusinessObjects\Imports\BankImportController.Designer.cs">
       <DependentUpon>BankImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportRuleController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportRuleController.Designer.cs">
-      <DependentUpon>BankImportRuleController.cs</DependentUpon>
-    </Compile>
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
       <SubType>Component</SubType>
@@ -237,9 +231,6 @@
     <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineMakeRuleController.resx">
       <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportRuleController.resx">
-      <DependentUpon>BankImportRuleController.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901160245272_InitialCreate.resx">
       <DependentUpon>201901160245272_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +242,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\BalanceSheet\BalanceSheetReport.resx">
       <DependentUpon>BalanceSheetReport.cs</DependentUpon>
     </EmbeddedResource>

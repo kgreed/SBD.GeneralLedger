@@ -50,8 +50,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         [RuleFromBoolProperty("RuleNameOk", DefaultContexts.Save, "Enter a Rule Name.")]
         public bool RuleNameOk => RuleName.Length > 0;
 
-        [NotMapped]
-        public bool ApplyOnAdd { get; set; }
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,14 +61,6 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public override void OnSaving()
-        {
-            if (ApplyOnAdd)
-            {
-                
-            }
-
-            base.OnSaving();
-        }
+        
     }
 }

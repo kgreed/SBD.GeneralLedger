@@ -1,8 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
+using SBD.GL.Module.BusinessObjects.Accounts;
 
 namespace SBD.GL.Module.BusinessObjects
 {
@@ -23,5 +27,6 @@ namespace SBD.GL.Module.BusinessObjects
         [ModelDefault("RowCount", "5")]
         public string Notes { get; set; }
 
+       
     }
 }

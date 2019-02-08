@@ -47,7 +47,8 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             newRule.Ref5 = importLine.Ref5;
 
             e.View = Application.CreateDetailView(newObjectSpace, newRule);
-    
+            e.View.Tag = View.CurrentObject;  //user by apply and save
+
         }
 
         

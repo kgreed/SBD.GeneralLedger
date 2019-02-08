@@ -36,6 +36,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             string listViewId = Application.FindLookupListViewId(typeof(Account));
             CollectionSourceBase collectionSource = Application.CreateCollectionSource(objectSpace, typeof(Account), listViewId);
             e.View = Application.CreateListView(listViewId, collectionSource, true);
+              
 
         }
 

@@ -66,9 +66,7 @@ namespace SBD.GL.Win {
 
         private string FilePath => SiteCache.Instance.LocalPath;
 
-        //string filePath = Application.LocalUserAppDataPath;
-        // paste from  http://blog.delegate.at/2018/04/15/how-to-use-the-desktop-bridge-to-create-an-appx-package-for-xaf.html
-
+       
         protected override string GetDcAssemblyFilePath()
             => Path.Combine(FilePath, ApplicationName, DcAssemblyFileName);
 
@@ -85,27 +83,10 @@ namespace SBD.GL.Win {
             => args.Path = Path.Combine(FilePath, ApplicationName);
 
         
-        // end paste 
-
 
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
 
-
-            //if(args.Connection != null)
-            //         {
-            //             Console.WriteLine(args.Connection);
-            //             Console.WriteLine(args.ConnectionString);
-
-            //             MessageBox.Show(args.ConnectionString);
-
-            //             args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, (DbConnection)args.Connection));
-            //}
-            //else
-            //         {
-            //             Console.WriteLine(args.Connection);
-            //             Console.WriteLine(args.ConnectionString);
-            //	args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null, args.ConnectionString));
-            //}
+      
             var connectionString = SiteCache.Instance.ConnectionString;
             args.ObjectSpaceProviders.Add(new EFObjectSpaceProvider(typeof(GLDbContext), TypesInfo, null,
                 connectionString));

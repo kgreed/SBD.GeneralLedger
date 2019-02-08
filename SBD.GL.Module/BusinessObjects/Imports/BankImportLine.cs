@@ -3,13 +3,14 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using SBD.GL.Module.BusinessObjects.Accounts;
 using SBD.GL.Module.BusinessObjects.Transactions;
 
 namespace SBD.GL.Module.BusinessObjects.Imports
 {
-    public class BankImportLine
+    public class BankImportLine : IObjectSpaceLink
     {
         [Key]
         public int Id { get; set; }
@@ -64,5 +65,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         public string Ref5 { get; set; }
         public virtual Account Account { get; set; }
         public string Note { get; set; }
+        [Browsable(false)]
+        public IObjectSpace ObjectSpace { get; set; }
     }
 }

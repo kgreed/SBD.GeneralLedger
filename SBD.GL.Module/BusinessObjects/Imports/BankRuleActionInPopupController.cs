@@ -1,5 +1,8 @@
-﻿using DevExpress.ExpressApp;
+﻿using System;
+using System.Diagnostics;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
+using DevExpress.ExpressApp.Win;
 using DevExpress.Persistent.Base;
 
 namespace SBD.GL.Module.BusinessObjects.Imports
@@ -13,6 +16,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             TargetObjectType = typeof(BankImportRule);
             SetUpActions();
         }
+        
 
         private void SetUpActions()
         {
@@ -32,8 +36,8 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             var actionInPopupAddCogsAccount = new SimpleAction(this, "addCogsAccount", PredefinedCategory.PopupActions);
             actionInPopupAddCogsAccount.Execute += ActionAddCogs_Execute;
 
-            //var actionSaveAndApply = new SimpleAction(this, "saveAndApply", PredefinedCategory.PopupActions);
-            //actionSaveAndApply.Execute += ActionSaveAndApply_Execute;
+            var actionSaveAndApply = new SimpleAction(this, "saveAndApply", PredefinedCategory.PopupActions);
+            actionSaveAndApply.Execute += ActionSaveAndApply_Execute;
 
         }
         void ActionAddExpense_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -58,10 +62,37 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             BankRuleFunctions.AddAccount(e.CurrentObject as BankImportRule, GLCategoryEnum.CostOfSales);
         }
 
-        //void ActionSaveAndApply_Execute(object sender, SimpleActionExecuteEventArgs e)
-        //{
-        //    BankRuleFunctions.SaveAndApplyRule(e.CurrentObject as BankImportRule);
-        //    View.Close();
-        //}
+        void ActionSaveAndApply_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+
+
+            //var listViewId = Application.GetListViewId(typeof(BankImport));
+
+
+            //var windows = ((MdiShowViewStrategy) Application.ShowViewStrategy).Windows;
+
+            //foreach (var win in windows)
+            //{
+
+
+
+            //    if (win.View?.Id != listViewId) continue;
+            //    var obj = win.View.CurrentObject;
+            //    if (!(obj is BankImport import)) continue;
+            //    BankRuleFunctions.SaveAndApplyRule(import, e.CurrentObject as BankImportRule);
+            //    break;
+
+            //}
+
+            var importLine = View.Tag as BankImportLine;
+            BankRuleFunctions.SaveAndApplyRule(importLine.BankImport, e.CurrentObject as BankImportRule);
+
+            Console.WriteLine("ok");
+
+
+
+
+            View.Close();
+        }
     }
 }

@@ -82,13 +82,10 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
         [Browsable(false)]
         public decimal OpeningBalance { get; set; }
 
-        //[NotMapped]
-        //public decimal Opening_Balance {
-        //    get => Header ? 0 : OpeningBalance;
-        //    set => OpeningBalance = value;
-        //}
 
-     
+        [Browsable(false)]
+        [RuleFromBoolProperty("GstOk", DefaultContexts.Save, "A Gst category is needed")]
+        public bool GstOk => (GstCategory != null);
 
 
         [Browsable(false)]
