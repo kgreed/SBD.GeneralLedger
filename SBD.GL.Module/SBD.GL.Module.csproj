@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
     <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
+    <Compile Include="BusinessObjects\Accounts\SimpleAccount.cs" />
     <Compile Include="BusinessObjects\Imports\BankRuleActionInPopupController.cs">
       <SubType>Component</SubType>
     </Compile>

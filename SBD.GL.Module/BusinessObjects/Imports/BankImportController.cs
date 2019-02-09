@@ -24,7 +24,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         {
             InitializeComponent();
             TargetObjectType = typeof(BankImport);
-
+            
             // Target required Views (via the TargetXXX properties) and create their Actions.
         }
         protected override void OnActivated()

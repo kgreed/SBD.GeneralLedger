@@ -58,9 +58,13 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         }
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
+        [Browsable(false)]
         public string Ref1 { get; set; }
+        [Browsable(false)]
         public string Ref2 { get; set; }
+        [Browsable(false)]
         public string Ref3 { get; set; }
+  
         public string Ref4 { get; set; }
         public string Ref5 { get; set; }
         public virtual Account Account { get; set; }

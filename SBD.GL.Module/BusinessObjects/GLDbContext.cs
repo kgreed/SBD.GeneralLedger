@@ -38,6 +38,10 @@ namespace SBD.GL.Module.BusinessObjects
         {
         }
 
+        public GLDbContext(ObjectContext objectContext) : base(objectContext,false)
+        {
+        }
+
         public GLDbContext()
             : base(new SQLiteConnection()
             {
@@ -47,7 +51,7 @@ namespace SBD.GL.Module.BusinessObjects
 
 
         }
-
+    //    public DbSet<SimpleAccount> SimpleAccounts { get; set; }
         public DbSet<ModuleInfo> ModulesInfo { get; set; }
         public DbSet<Analysis> Analysis { get; set; }
      //   public DbSet<H2Category> H2Categories { get; set; }

@@ -1,11 +1,15 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using DevExpress.XtraEditors;
 using SBD.GL.Module.Annotations;
 using SBD.GL.Module.BusinessObjects.Accounts;
 
@@ -29,7 +33,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         private Account _toAccount;
 
         [Required]
-      //  [ImmediatePostData]
+    
         public virtual Account ToAccount
         {
             get => _toAccount;
@@ -41,9 +45,12 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
         }
 
+  
+
         public string RuleName { get; set; }
         [Browsable(false)]
         public IObjectSpace ObjectSpace { get; set; }
+ 
 
 
         [Browsable(false)]

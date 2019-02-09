@@ -20,24 +20,64 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
         private void SetUpActions()
         {
-            var actionInPopupAddAssetAccount = new SimpleAction(this, "addAssetAccount", PredefinedCategory.PopupActions);
+            var actionInPopupAddAssetAccount =
+                new SimpleAction(this, "Asset", PredefinedCategory.PopupActions)
+                {
+                    ImageName = "Actions_Arrow2LeftUp",
+                    Shortcut = "Control+Shift+A",
+                    ToolTip = "Create Asset Account and Assign it (Control+Shift+A)"
+                };
             actionInPopupAddAssetAccount.Execute += ActionAddAsset_Execute;
 
-            var actionInPopupAddLiabilityAccount = new SimpleAction(this, "addLiabilityAccount", PredefinedCategory.PopupActions);
+            var actionInPopupAddLiabilityAccount = new SimpleAction(this, "Liability", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Actions_Arrow2LeftDown",
+                Shortcut = "Control+Shift+L",
+                ToolTip = "Create Liability Account and Assign it (Control+Shift+L)"
+            };
             actionInPopupAddLiabilityAccount.Execute += ActionAddLiability_Execute;
 
-            var actionInPopupAddExpenseAccount = new SimpleAction(this, "addExpenseAccount", PredefinedCategory.PopupActions);
-            actionInPopupAddExpenseAccount.Execute += ActionAddExpense_Execute;
-
-            var actionInPopupAddIncomeAccount = new SimpleAction(this, "addIncomeAccount", PredefinedCategory.PopupActions);
-             
+            var actionInPopupAddIncomeAccount = new SimpleAction(this, "Income", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Actions_Arrow4RightUp",
+                Shortcut = "Control+Shift+I",
+                ToolTip = "Create Income Account and Assign it (Control+Shift+I)"
+            };
             actionInPopupAddIncomeAccount.Execute += ActionAddIncome_Execute;
 
-            var actionInPopupAddCogsAccount = new SimpleAction(this, "addCogsAccount", PredefinedCategory.PopupActions);
+            var actionInPopupAddCogsAccount = new SimpleAction(this, "COGS", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Actions_Arrow1RightDown",
+                Shortcut = "Control+Shift+L",
+                ToolTip = "Create Cost of Sales Account and Assign it (Control+Shift+L)"
+            };
             actionInPopupAddCogsAccount.Execute += ActionAddCogs_Execute;
 
-            var actionSaveAndApply = new SimpleAction(this, "saveAndApply", PredefinedCategory.PopupActions);
+            var actionInPopupAddExpenseAccount = new SimpleAction(this, "Expense", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Actions_Arrow4RightDown",
+                Shortcut = "Control+Shift+E",
+                ToolTip = "Create Expense Account and Assign it (Control+Shift+E)"
+            };
+            actionInPopupAddExpenseAccount.Execute += ActionAddExpense_Execute;
+
+
+            var actionSaveAndApply = new SimpleAction(this, "Save && Apply", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Import",
+                Shortcut = "Control+Shift+S",
+                ToolTip = "Save and Apply (Control+Shift+S)"
+            };
             actionSaveAndApply.Execute += ActionSaveAndApply_Execute;
+
+            var actionCopyRef5 = new SimpleAction(this, "CopYref5", PredefinedCategory.PopupActions)
+            {
+                ImageName = "Copy",
+                Shortcut = "Control+Shift+Y",
+                ToolTip = "Copy Ref 5 to Rule Name (Control+Shift+Y)"
+            };
+            actionCopyRef5.Execute += ActionCopyRef5_Execute;
+
 
         }
         void ActionAddExpense_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -65,34 +105,15 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         void ActionSaveAndApply_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
 
-
-            //var listViewId = Application.GetListViewId(typeof(BankImport));
-
-
-            //var windows = ((MdiShowViewStrategy) Application.ShowViewStrategy).Windows;
-
-            //foreach (var win in windows)
-            //{
-
-
-
-            //    if (win.View?.Id != listViewId) continue;
-            //    var obj = win.View.CurrentObject;
-            //    if (!(obj is BankImport import)) continue;
-            //    BankRuleFunctions.SaveAndApplyRule(import, e.CurrentObject as BankImportRule);
-            //    break;
-
-            //}
-
             var importLine = View.Tag as BankImportLine;
             BankRuleFunctions.SaveAndApplyRule(importLine.BankImport, e.CurrentObject as BankImportRule);
-
-            Console.WriteLine("ok");
-
-
-
-
             View.Close();
+        }
+
+        void ActionCopyRef5_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            BankRuleFunctions.CopyRef5(e.CurrentObject as BankImportRule);
+            View.Refresh();
         }
     }
 }

@@ -24,23 +24,30 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         public static void AddAccount(BankImportRule rule, GLCategoryEnum type)
         {
             var os = rule.ObjectSpace;
-            var account = os.CreateObject<Account>();
-            var glCriteria = CriteriaOperator.Parse("[Category] == ? ", type);
-            var glCategories = os.GetObjects<GLCategory>(glCriteria);
-            var glCategory = glCategories.FirstOrDefault();
-            var criteria = CriteriaOperator.Parse("Parent_ID == null && [GLCategory_Id] == ? ", glCategory.Id);
+            var op =  CriteriaOperator.Parse("[Code]=?",rule.RuleName);
+            var account = os.FindObject<Account>(op);
+            if (account == null)
+            {
 
-            var rootExpenseAccount = os.FindObject<Account>(criteria);
-            account.Parent = rootExpenseAccount;
-            account.Category = glCategory;
-            var isPandL = type == GLCategoryEnum.CostOfSales ||
-                          type == GLCategoryEnum.Income ||
-                          type == GLCategoryEnum.Expense ||
-                          type == GLCategoryEnum.OtherExpense ||
-                          type == GLCategoryEnum.OtherIncome;
-            account.GstCategory = HandyDefaults.DefaultGstCategory(os, isPandL);
-            account.Code = $"{account.Parent.Code} {rule.RuleName}";
-            os.ModifiedObjects.Add(account);
+                account = os.CreateObject<Account>();
+                var glCriteria = CriteriaOperator.Parse("[Category] == ? ", type);
+                var glCategories = os.GetObjects<GLCategory>(glCriteria);
+                var glCategory = glCategories.FirstOrDefault();
+                var criteria = CriteriaOperator.Parse("Parent_ID == null && [GLCategory_Id] == ? ", glCategory.Id);
+
+                var rootExpenseAccount = os.FindObject<Account>(criteria);
+                account.Parent = rootExpenseAccount;
+                account.Category = glCategory;
+                var isPandL = type == GLCategoryEnum.CostOfSales ||
+                              type == GLCategoryEnum.Income ||
+                              type == GLCategoryEnum.Expense ||
+                              type == GLCategoryEnum.OtherExpense ||
+                              type == GLCategoryEnum.OtherIncome;
+                account.GstCategory = HandyDefaults.DefaultGstCategory(os, isPandL);
+                account.Code = $"{account.Parent.Code} {rule.RuleName}";
+                os.ModifiedObjects.Add(account);
+            }
+
             rule.ToAccount = account;
             rule.ObjectSpace.ReloadObject(rule);
         }
@@ -102,6 +109,11 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             if (lineRef == null || ruleRef == null) return true;
             if (lineRef.Length == 0 || ruleRef.Length == 0) return true;
             return lineRef.Contains(ruleRef);
+        }
+
+        public static void CopyRef5(BankImportRule rule)
+        {
+            rule.RuleName = rule.Ref5;
         }
     }
 }
