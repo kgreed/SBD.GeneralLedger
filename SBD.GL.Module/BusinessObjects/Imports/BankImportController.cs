@@ -13,6 +13,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using SBD.GL.Module.BusinessObjects.Accounts;
 using SBD.GL.Module.BusinessObjects.Transactions;
 
 namespace SBD.GL.Module.BusinessObjects.Imports
@@ -95,5 +96,47 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             View.ObjectSpace.CommitChanges();
             View.ObjectSpace.Refresh();
         }
+
+        private void actMakeNewRules_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var bankImport = e.CurrentObject as BankImport;
+            var os = View.ObjectSpace;
+
+            var unassignedLines = bankImport.Lines.Where(x => x.Account == null && x.Ref5.Length > 0).ToList();
+
+            var categoryType = GLCategoryEnum.Expense;
+
+            foreach (var line in unassignedLines)
+            {
+                var rule = os.FindObject<BankImportRule>(CriteriaOperator.Parse("[RuleName]=?", line.Ref5)); // just matching 5
+                if (rule != null)
+                {
+                    line.Account = os.GetObject(rule.ToAccount);
+                    continue;
+                }
+
+               
+
+                var newRule = BankRuleFunctions.MakeRuleFromBankImportLine(line, os);
+                newRule.FromAccount = os.GetObject(bankImport.Account);
+
+                //var code = $"0{categoryType:D} {line.Ref5}";
+                var code = line.Ref5;
+                var toAccount = os.FindObject<Account>(CriteriaOperator.Parse("Code=?", code));
+                if (toAccount == null)
+                {
+                    toAccount =BankRuleFunctions.CreateAccount(code, categoryType, os);
+                }
+
+                newRule.RuleName = line.Ref5;
+                newRule.ToAccount = toAccount;
+                os.ModifiedObjects.Add(newRule);
+               // line.Account = os.GetObject(rule.ToAccount);
+
+            }
+            os.CommitChanges();
+            View.ObjectSpace.Refresh();
+        }
+     
     }
 }

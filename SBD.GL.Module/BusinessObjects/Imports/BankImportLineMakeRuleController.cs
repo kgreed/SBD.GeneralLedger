@@ -37,21 +37,14 @@ namespace SBD.GL.Module.BusinessObjects.Imports
             var importLine = View.CurrentObject as BankImportLine;
             newObjectSpace = Application.CreateObjectSpace(typeof(BankImportRule));
            
-            var newRule = newObjectSpace.CreateObject<BankImportRule>();
-            newRule.FromAccount = newObjectSpace.GetObject(importLine.BankImport.Account);
-          
-            newRule.Ref1 = importLine.Ref1;
-            newRule.Ref2 = importLine.Ref2;
-            newRule.Ref3 = importLine.Ref3;
-            newRule.Ref4 = importLine.Ref4;
-            newRule.Ref5 = importLine.Ref5;
+            var newRule = BankRuleFunctions.MakeRuleFromBankImportLine(importLine, newObjectSpace);
 
             e.View = Application.CreateDetailView(newObjectSpace, newRule);
             e.View.Tag = View.CurrentObject;  //user by apply and save
 
         }
 
-        
+       
 
         private void popupBankImportWindowShowActionMakeRule_Cancel(object sender, EventArgs e)
         {

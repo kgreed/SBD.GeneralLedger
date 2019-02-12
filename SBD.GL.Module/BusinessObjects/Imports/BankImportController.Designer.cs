@@ -32,6 +32,7 @@
             this.actApplyRules = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actClearAMatches = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actPost = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actMakeNewRules = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
             // actApplyRules
             // 
@@ -65,11 +66,23 @@
             this.actPost.ToolTip = "Post Matched Import Lines to create account transactions";
             this.actPost.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actPost_Execute);
             // 
+            // actMakeNewRules
+            // 
+            this.actMakeNewRules.Caption = "Make New Rules";
+            this.actMakeNewRules.ConfirmationMessage = null;
+            this.actMakeNewRules.Id = "MakeNewRules";
+            this.actMakeNewRules.ImageName = "AddQuery";
+            this.actMakeNewRules.QuickAccess = true;
+            this.actMakeNewRules.Shortcut = "";
+            this.actMakeNewRules.ToolTip = "Apply rules to match Accounts to import lines";
+            this.actMakeNewRules.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actMakeNewRules_Execute);
+            // 
             // BankImportController
             // 
             this.Actions.Add(this.actApplyRules);
             this.Actions.Add(this.actClearAMatches);
             this.Actions.Add(this.actPost);
+            this.Actions.Add(this.actMakeNewRules);
 
         }
 
@@ -78,5 +91,6 @@
         private DevExpress.ExpressApp.Actions.SimpleAction actApplyRules;
         private DevExpress.ExpressApp.Actions.SimpleAction actClearAMatches;
         private DevExpress.ExpressApp.Actions.SimpleAction actPost;
+        private DevExpress.ExpressApp.Actions.SimpleAction actMakeNewRules;
     }
 }

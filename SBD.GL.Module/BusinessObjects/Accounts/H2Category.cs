@@ -24,7 +24,7 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
         [InverseProperty("Parent")]
         public virtual IList<H2Category> Children { get; set; }
 
-        [NotMapped, Browsable(false), RuleFromBoolProperty("H2CategoryCircularReferences", DefaultContexts.Save, "Circular refrerence detected. To correct this error, set the Parent property to another value.", UsedProperties = "Parent")]
+        [NotMapped, Browsable(false), RuleFromBoolProperty("H2CategoryCircularReferences", DefaultContexts.Save, "Circular reference detected. To correct this error, set the Parent property to another value.", UsedProperties = "Parent")]
         public Boolean IsValid
         {
             get

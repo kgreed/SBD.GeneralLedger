@@ -45,12 +45,12 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
 
         public override void OnSaving()
         {
-            Header = Children.Count > 0;
+           // Header = Children.Count > 0;
             base.OnSaving();
         }
 
-        [ModelDefault(ModelDefaultConstants.AllowEdit, "false")]
-        public bool Header { get; set; }
+        //[ModelDefault(ModelDefaultConstants.AllowEdit, "false")]
+        //public bool Header { get; set; }
         
 
         [MaxLength(60)] // so we can index it

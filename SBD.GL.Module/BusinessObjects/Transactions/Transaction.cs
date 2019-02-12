@@ -76,15 +76,7 @@ namespace SBD.GL.Module.BusinessObjects.Transactions
         [NotMapped]
         public Account HiddenAccount  // other side of the transaction = header linked account
         {
-            get
-            {
-                if (Amount > 0)
-                {
-                    return CreditAccount;
-                }
-
-                return DebitAccount;
-            }
+            get => Amount > 0 ? CreditAccount : DebitAccount;
             set
             {
                 if (Amount > 0)
@@ -109,9 +101,9 @@ namespace SBD.GL.Module.BusinessObjects.Transactions
             set => Amount = value;
         }
 
-        [Browsable(false)]
-        [RuleFromBoolProperty("AccountOk", DefaultContexts.Save, "Account must not be a header account")]
-        public bool AccountOk => Account.Header == false;
+        //[Browsable(false)]
+        //[RuleFromBoolProperty("AccountOk", DefaultContexts.Save, "Account must not be a header account")]
+        //public bool AccountOk => Account.Header == false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

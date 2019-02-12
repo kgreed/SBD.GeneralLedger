@@ -34,7 +34,10 @@ namespace SBD.GL.Module.BusinessObjects.Imports
                     }
                     if (MatchingHeader.LinkedAccount?.Id != BankImport.Account?.Id)
                     {
-                        return "Matching Header Account has changed";
+                        if (MatchingHeader.Transactions.FirstOrDefault()?.Account?.Id != BankImport.Account?.Id)
+                        {
+                            return $"Header account is {MatchingHeader.LinkedAccount} child account is {MatchingHeader.Transactions.FirstOrDefault()?.Account}. One needs to be {BankImport.Account}";
+                        }
                     }
 
                     if (MatchingHeader.Transactions.Count > 1)
@@ -46,7 +49,7 @@ namespace SBD.GL.Module.BusinessObjects.Imports
                         return "No disbursements have been made";
                     }
 
-                    return MatchingHeader.Transactions.FirstOrDefault().Account.Id != Account.Id ? "Disbursement account has been changed" : "";
+                    return "";
 
                 }
                 catch (Exception e)

@@ -119,6 +119,7 @@
     <Compile Include="Controllers\AccountController.Designer.cs">
       <DependentUpon>AccountController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountDragDropController.cs" />
     <Compile Include="CustomListEditor.cs" />
     <Compile Include="WinModule.cs">
       <SubType>Component</SubType>
