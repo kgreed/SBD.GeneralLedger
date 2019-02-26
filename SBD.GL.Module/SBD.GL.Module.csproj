@@ -163,6 +163,7 @@
     <Compile Include="BusinessObjects\Imports\BankImportController.Designer.cs">
       <DependentUpon>BankImportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\Imports\CustomizeContainerActions.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
       <SubType>Component</SubType>

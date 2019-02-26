@@ -23,7 +23,7 @@ namespace SBD.GL.Module.BusinessObjects
         public GLDbContext(String connectionString)
             : base(new SQLiteConnection() { ConnectionString = MyConnectionString() }, true)
         {
-           // Database.SetInitializer(new GlDBInitializer());
+            Database.SetInitializer(new GlDBInitializer());
            // this.Configuration.ProxyCreationEnabled = false;
         }
 
@@ -36,6 +36,7 @@ namespace SBD.GL.Module.BusinessObjects
         public GLDbContext(DbConnection connection)
             : base(connection, false)
         {
+            Database.SetInitializer(new GlDBInitializer());
         }
 
         public GLDbContext(ObjectContext objectContext) : base(objectContext,false)
@@ -48,13 +49,13 @@ namespace SBD.GL.Module.BusinessObjects
                 ConnectionString =MyConnectionString()
             }, true)
         {
-
+            Database.SetInitializer(new GlDBInitializer());
 
         }
-    //    public DbSet<SimpleAccount> SimpleAccounts { get; set; }
+  
         public DbSet<ModuleInfo> ModulesInfo { get; set; }
         public DbSet<Analysis> Analysis { get; set; }
-     //   public DbSet<H2Category> H2Categories { get; set; }
+     
         public DbSet<ReportDataV2> ReportDataV2 { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Account> Accounts { get; set; }
@@ -83,8 +84,7 @@ namespace SBD.GL.Module.BusinessObjects
                 .WithMany(x => x.Children)
                 .HasForeignKey(x => x.Parent_Id);
 
-         //   modelBuilder.Entity<Transaction>().HasKey(x => x.Id).Property(x => x.TranHeader_Id).IsRequired();
-
+         
 
             modelBuilder.Entity<TranHeader>()
                 .HasMany(x=>x.Transactions)
@@ -96,10 +96,7 @@ namespace SBD.GL.Module.BusinessObjects
                 .WithRequired(x=>x.BankImport)
                 .WillCascadeOnDelete(true);
 
-          //  modelBuilder.Entity<BankImportLine>().HasOptional(x => x.MatchingHeader);
-
-
-
+          
 
             modelBuilder.Entity<H2Category>().HasMany(x => x.Children).WithOptional(x => x.Parent);
 
@@ -112,7 +109,9 @@ namespace SBD.GL.Module.BusinessObjects
         {
             protected override void Seed(GLDbContext context)
             {
-                
+                // does not fire for some reason
+                HandyDataFunctions.Seed(context);
+
                 base.Seed(context);
             }
 

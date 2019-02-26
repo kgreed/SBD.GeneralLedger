@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.actImportNab = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actMakeParent = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.actMakeChild = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
             // actImportNab
             // 
@@ -39,18 +41,37 @@
             this.actImportNab.ImageName = "ImageImport";
             this.actImportNab.QuickAccess = true;
             this.actImportNab.Shortcut = "Control+Shift+I";
-            this.actImportNab.TargetObjectsCriteria = "Header = false";
+            this.actImportNab.TargetObjectsCriteria = "";
             this.actImportNab.ToolTip = "Import from a National Bank Transaction file";
             this.actImportNab.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actImportNab_Execute);
+            // 
+            // actMakeParent
+            // 
+            this.actMakeParent.Caption = "Make Parent";
+            this.actMakeParent.ConfirmationMessage = null;
+            this.actMakeParent.Id = "MakeParent";
+            this.actMakeParent.ToolTip = null;
+            // 
+            // actMakeChild
+            // 
+            this.actMakeChild.Caption = "Make Child";
+            this.actMakeChild.ConfirmationMessage = null;
+            this.actMakeChild.Id = "MakeChild";
+            this.actMakeChild.ToolTip = null;
+            this.actMakeChild.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.actMakeChild_Execute);
             // 
             // AccountController
             // 
             this.Actions.Add(this.actImportNab);
+            this.Actions.Add(this.actMakeParent);
+            this.Actions.Add(this.actMakeChild);
 
         }
 
         #endregion
 
         private DevExpress.ExpressApp.Actions.SimpleAction actImportNab;
+        private DevExpress.ExpressApp.Actions.SimpleAction actMakeParent;
+        private DevExpress.ExpressApp.Actions.SimpleAction actMakeChild;
     }
 }

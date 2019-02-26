@@ -59,7 +59,7 @@ namespace SBD.GL.Module.Win.Controllers
             };
 
 
-            if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
             var fileName = openFileDialog1.FileName;
 
 
@@ -102,11 +102,10 @@ namespace SBD.GL.Module.Win.Controllers
             View.ObjectSpace.CommitChanges();
 
             IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(BankImport));
-            //var createdView = Application.CreateListView(objectSpace, typeof(BankImport), true);
-            //createdView.ObjectSpace.Refresh(); // does not help
+             
 
 
-            var bi = objectSpace.GetObject<BankImport>(bankImport);
+            var bi = objectSpace.GetObject(bankImport);
 
             BankRuleFunctions.RunBankRules(bi, objectSpace);
 
@@ -118,6 +117,17 @@ namespace SBD.GL.Module.Win.Controllers
 
         }
 
-        
+        private void actMakeChild_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+          var selectedAccount =  e.CurrentObject as Account;
+          var os = View.ObjectSpace;
+          var newAccount = os.CreateObject<Account>();
+
+          newAccount.Parent = selectedAccount;
+          newAccount.Category = selectedAccount.Category;
+          newAccount.GstCategory = selectedAccount.GstCategory;
+          newAccount.Code = $"{newAccount.Category} {selectedAccount.Code}";
+          View.ObjectSpace.CommitChanges();
+        }
     }
 }

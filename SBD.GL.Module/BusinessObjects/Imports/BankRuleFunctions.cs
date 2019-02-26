@@ -32,8 +32,8 @@ namespace SBD.GL.Module.BusinessObjects.Imports
         public static void AddAccount(BankImportRule rule, GLCategoryEnum categoryType)
         {
             var os = rule.ObjectSpace;
-          //  var code = $"0{categoryType:D} {rule.RuleName}";
-          var code = rule.RuleName;
+          
+            var code = rule.RuleName;
             var op =  CriteriaOperator.Parse("[Code]=?",code);
             var account = os.FindObject<Account>(op) ?? CreateAccount(code, categoryType, os);
 

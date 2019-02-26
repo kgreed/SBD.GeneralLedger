@@ -39,7 +39,7 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
         {
              
             
-            //GstCategory = HandyFunctions.DefaultGstCategory(ObjectSpace,! Category.IsBalanceSheet);
+            GstCategory = HandyDefaults.DefaultGstCategory(ObjectSpace,true);
             base.OnCreated();
         }
 
@@ -49,9 +49,7 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
             base.OnSaving();
         }
 
-        //[ModelDefault(ModelDefaultConstants.AllowEdit, "false")]
-        //public bool Header { get; set; }
-        
+         
 
         [MaxLength(60)] // so we can index it
         [System.ComponentModel.DataAnnotations.Schema.Index(IsUnique = true)]

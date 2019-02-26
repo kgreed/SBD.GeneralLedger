@@ -23,14 +23,7 @@ namespace SBD.GL.Win {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             EditModelPermission.AlwaysGranted = System.Diagnostics.Debugger.IsAttached;
-            //if(Tracing.GetFileLocationFromSettings() == DevExpress.Persistent.Base.FileLocation.CurrentUserApplicationDataFolder) {
-            //    Tracing.LocalUserAppDataPath = Application.LocalUserAppDataPath;
-            //}
-         //   string filePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
-
-            
-
-             
+         
 
             GLWindowsFormsApplication winApplication = new GLWindowsFormsApplication();
 
@@ -47,13 +40,9 @@ namespace SBD.GL.Win {
 
             Tracing.Initialize();
 
-            // Refer to the https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112680.aspx help article for more details on how to provide a custom splash form.
-            //winApplication.SplashScreen = new DevExpress.ExpressApp.Win.Utils.DXSplashScreen("YourSplashImage.png");
+          
 
-            //if (ConfigurationManager.ConnectionStrings["ConnectionString"] != null)
-            //{
-            //    winApplication.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            //}
+  
 #if EASYTEST
             if(ConfigurationManager.ConnectionStrings["EasyTestConnectionString"] != null) {
                 winApplication.ConnectionString = ConfigurationManager.ConnectionStrings["EasyTestConnectionString"].ConnectionString;
@@ -68,7 +57,7 @@ namespace SBD.GL.Win {
 
                 // access db so it is created here.
                 HandyDataFunctions.EnsureDatabaseIsCreated();
-                // end of modification
+     
 
                 winApplication.Setup();
                 winApplication.Start();

@@ -99,42 +99,49 @@ namespace SBD.GL.Module.BusinessObjects.Imports
 
         private void actMakeNewRules_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            var bankImport = e.CurrentObject as BankImport;
-            var os = View.ObjectSpace;
-
-            var unassignedLines = bankImport.Lines.Where(x => x.Account == null && x.Ref5.Length > 0).ToList();
-
-            var categoryType = GLCategoryEnum.Expense;
-
-            foreach (var line in unassignedLines)
+            try
             {
-                var rule = os.FindObject<BankImportRule>(CriteriaOperator.Parse("[RuleName]=?", line.Ref5)); // just matching 5
-                if (rule != null)
+                var bankImport = e.CurrentObject as BankImport;
+                var os = View.ObjectSpace;
+
+                var unassignedLines = bankImport.Lines.Where(x => x.Account == null && x.Ref5.Length > 0).ToList();
+
+                var categoryType = GLCategoryEnum.Expense;
+
+                foreach (var line in unassignedLines)
                 {
-                    line.Account = os.GetObject(rule.ToAccount);
-                    continue;
+                    var rule = os.FindObject<BankImportRule>(CriteriaOperator.Parse("[RuleName]=?", line.Ref5)); // just matching 5
+                    if (rule != null)
+                    {
+                        line.Account = os.GetObject(rule.ToAccount);
+                        continue;
+                    }
+
+
+
+                    var newRule = BankRuleFunctions.MakeRuleFromBankImportLine(line, os);
+                   
+                    var ac = os.GetObject(bankImport.Account);
+                    newRule.FromAccount = ac;
+
+                   //var code = $"0{categoryType:D} {line.Ref5}";
+                   var code = line.Ref5;
+                    var toAccount = os.FindObject<Account>(CriteriaOperator.Parse("Code=?", code)) ?? BankRuleFunctions.CreateAccount(code, categoryType, os);
+
+                    newRule.RuleName = line.Ref5;
+                    newRule.ToAccount = toAccount;
+                    os.ModifiedObjects.Add(newRule);
+                    // line.Account = os.GetObject(rule.ToAccount);
+
                 }
-
-               
-
-                var newRule = BankRuleFunctions.MakeRuleFromBankImportLine(line, os);
-                newRule.FromAccount = os.GetObject(bankImport.Account);
-
-                //var code = $"0{categoryType:D} {line.Ref5}";
-                var code = line.Ref5;
-                var toAccount = os.FindObject<Account>(CriteriaOperator.Parse("Code=?", code));
-                if (toAccount == null)
-                {
-                    toAccount =BankRuleFunctions.CreateAccount(code, categoryType, os);
-                }
-
-                newRule.RuleName = line.Ref5;
-                newRule.ToAccount = toAccount;
-                os.ModifiedObjects.Add(newRule);
-               // line.Account = os.GetObject(rule.ToAccount);
-
             }
-            os.CommitChanges();
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+           
+            View.ObjectSpace.CommitChanges();
             View.ObjectSpace.Refresh();
         }
      

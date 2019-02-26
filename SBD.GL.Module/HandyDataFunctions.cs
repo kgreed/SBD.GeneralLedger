@@ -13,11 +13,6 @@ namespace SBD.GL.Module
 {
     public static class HandyDataFunctions
     {
-      
-
-    
-
-
 
         public static void EnsureDatabaseIsCreated()
         {
@@ -40,7 +35,7 @@ namespace SBD.GL.Module
             }
         }
 
-        private static void Seed(GLDbContext context)
+        public static void Seed(GLDbContext context)
         {
             var balanceSheetGst = context.GstCategories.Add(new GstCategory { Code = "N-T", Percent = 0 });
             var pandlGst = context.GstCategories.Add(new GstCategory { Code = "GST", Percent = 10 });

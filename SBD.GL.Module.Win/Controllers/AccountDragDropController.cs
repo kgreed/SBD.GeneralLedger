@@ -11,6 +11,7 @@ using DevExpress.Utils.Behaviors;
 using DevExpress.Utils.DragDrop;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
 using SBD.GL.Module.BusinessObjects.Accounts;
 using ListView = DevExpress.ExpressApp.ListView;
 
@@ -18,8 +19,7 @@ namespace SBD.GL.Module.Win.Controllers
 {
     public class AccountDragDropController : ViewController<ListView>
     {
-        private BehaviorManager behaviorManager1;
-        DragDropBehavior behaviorField = null;
+        
         public AccountDragDropController()
         {
         
@@ -39,11 +39,7 @@ namespace SBD.GL.Module.Win.Controllers
         protected override void OnDeactivated()
         {
             View.EditorChanged -= View_EditorChanged;
-            if (behaviorField != null)
-            {
-                //...
-                behaviorField = null;
-            }
+            
             base.OnDeactivated();
         }
 
@@ -67,63 +63,54 @@ namespace SBD.GL.Module.Win.Controllers
             if (!(View.Editor is TreeListEditor editor) || editor.TreeList == null) return;
             var treeList = editor.TreeList;
             treeList.AllowDrop = false;  // setting this to true prevents any drag drop icon
-            behaviorManager1 = new BehaviorManager();
-            behaviorManager1.Attach(editor.TreeList, BehaviorSettings());
-          
-            treeList.OptionsDragAndDrop.DragNodesMode = DragNodesMode.Single;
-            treeList.OptionsDragAndDrop.DropNodesMode = DropNodesMode.Standard;
+
+
+            treeList.OptionsDragAndDrop.DragNodesMode = DragNodesMode.Multiple; // this is required to turn on drag drop
+         //  treeList.OptionsDragAndDrop.DropNodesMode = DropNodesMode.
+           treeList.DragObjectDrop += TreeList_DragObjectDrop;
+           treeList.AfterDropNode += TreeList_AfterDropNode;
 
         }
 
-        private Action<DragDropBehavior> BehaviorSettings()
+        private void TreeList_DragObjectDrop(object sender, DragObjectDropEventArgs e)
         {
-            return behavior =>
-            {
-                behavior.Properties.AllowDrop = true;
-                behavior.Properties.InsertIndicatorVisible = true;
-                behavior.Properties.PreviewVisible = true;
-                behavior.DragOver += Behavior_DragOver;
-                behavior.DragDrop += Behavior_DragDrop;
-                behavior.BeginDragDrop += Behavior_BeginDragDrop;
-                behaviorField = behavior;
-            };
+            // does not get called
+           var droppedon = e.DropInfo.RowIndex;
+         //   DropNodes(e.DropInfo.);
         }
 
-
-        private void Behavior_DragOver(object sender, DragOverEventArgs e)
+        private void TreeList_AfterDropNode(object sender, AfterDropNodeEventArgs e)
         {
+            
+             DropNodes( e.Node, e.DestinationNode); // works but temporarily displays double nodes
+
+        }
+
+        private void DropNodes(TreeListNode sourceNode, TreeListNode droppedOnNode )
+        {
+
+
             if (!(View.Editor is TreeListEditor editor) || editor.TreeList == null) return;
             var treeList = editor.TreeList;
-            var args = DragOverGridEventArgs.GetDragOverGridEventArgs(e);
-            e.InsertType = args.InsertType;
-            e.InsertIndicatorLocation = args.InsertIndicatorLocation;
-            e.Action = args.Action;
-            //
 
-            var target = e.Target as ObjectTreeList;
-            var hitPoint = target.PointToClient(Cursor.Position);
-            var hitInfo = target.CalcHitInfo(hitPoint);
-
-            var candidateNode = hitInfo.Node;
-            var candidateAccount = candidateNode.Tag as Account;
-            //https://www.devexpress.com/Support/Center/Question/Details/Q356150/how-to-enable-drag-and-drop-feature-for-xaf-treelisteditor
-            if (candidateAccount.OpeningBalance != 0)
-            {
-                // allow drop , but how?
-                //TreeList treeControl = (TreeList)editor.Control;
-                //e.Action = DragDropActions.Move;
+            var droppedOnAccount = droppedOnNode.Tag as Account;
             
-                treeList.OptionsDragAndDrop.DragNodesMode = DragNodesMode.None;
-            }
-            else
-            {
-                treeList.OptionsDragAndDrop.DragNodesMode = DragNodesMode.Single;
-            }
-            //
+            Trace.WriteLine($"count1:{droppedOnAccount.Children.Count} ");
+            var sourceAccount = sourceNode.Tag as Account;
+            Trace.WriteLine($"count2:{droppedOnAccount.Children.Count} ");
+            sourceAccount.Parent = droppedOnAccount;
+            Trace.WriteLine($"count3:{droppedOnNode.Nodes.Count} ");
+            droppedOnAccount.Children.Add(sourceAccount);
+            Trace.WriteLine($"count4:{droppedOnNode.Nodes.Count} ");
 
-            Cursor.Current = args.Cursor;
-            args.Handled = true;
+
+            View.ObjectSpace.CommitChanges();
+            treeList.RefreshNode(sourceNode);
+            treeList.RefreshNode(droppedOnNode);
         }
+
+
+      
 
         private void Behavior_BeginDragDrop(object sender, BeginDragDropEventArgs e)
         {
@@ -132,28 +119,6 @@ namespace SBD.GL.Module.Win.Controllers
             // not sure what to do here
         }
 
-        private void Behavior_DragDrop(object sender, DragDropEventArgs e)
-        {
-           
-            var target = e.Target as ObjectTreeList;  
-            if (e.Action == DragDropActions.None) return;  // If I disable this line then I can move the node
-            if (target == null) return;
-
-            var hitPoint = target.PointToClient(Cursor.Position);
-            var hitInfo = target.CalcHitInfo(hitPoint);
-         
-            var droppedOnNode = hitInfo.Node;
-            var droppedNode = target.FocusedNode;
-
-            var account = droppedNode.Object as Account;
-            var newParent = droppedOnNode.Tag as Account;
-
-            account.Parent = newParent;
-
-            View.ObjectSpace.SetModified(account);
-            View.ObjectSpace.CommitChanges();
-             
-
-        }
+        
     }
 }
