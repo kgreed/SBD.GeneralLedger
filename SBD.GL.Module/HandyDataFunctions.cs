@@ -58,6 +58,14 @@ namespace SBD.GL.Module
                 context.Accounts.Add(child2);
                 context.Accounts.Add(child3);
 
+                for (int j = 0; j < 20; j++)
+                {
+                    var grandchild = new Account { Code = $"0{i}-gc{j:D2}", Category = cat, GstCategory = gstCategory, Parent = child3 };
+                    child3.Children.Add(grandchild);
+                    
+                }
+              
+
             }
 
             context.SaveChanges();
