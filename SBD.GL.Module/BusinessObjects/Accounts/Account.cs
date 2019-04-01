@@ -37,8 +37,6 @@ namespace SBD.GL.Module.BusinessObjects.Accounts
 
         public override void OnCreated()
         {
-             
-            
             GstCategory = HandyDefaults.DefaultGstCategory(ObjectSpace,true);
             base.OnCreated();
         }

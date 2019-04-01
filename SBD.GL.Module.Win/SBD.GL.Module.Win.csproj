@@ -120,6 +120,28 @@
       <DependentUpon>AccountController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountDragDropController.cs" />
+    <Compile Include="Controllers\BankImportController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\BankImportController.Designer.cs">
+      <DependentUpon>BankImportController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BankImportLineMakeRuleController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\BankImportLineMakeRuleController.Designer.cs">
+      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BankImportLinePopUpActionController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\BankImportLinePopUpActionController.Designer.cs">
+      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BankRuleActionInPopupController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\BankRuleFunctions.cs" />
     <Compile Include="CustomListEditor.cs" />
     <Compile Include="WinModule.cs">
       <SubType>Component</SubType>
@@ -132,6 +154,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Controllers\AccountController.resx">
       <DependentUpon>AccountController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\BankImportController.resx">
+      <DependentUpon>BankImportController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\BankImportLineMakeRuleController.resx">
+      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\BankImportLinePopUpActionController.resx">
+      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml">
       <SubType>Designer</SubType>
@@ -176,41 +207,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp">
+      <Version>18.2.7</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Core.All">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.EF">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotChart">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotChart.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotGrid.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.TreeListEditors.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Validation">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Validation.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Win">
-      <Version>18.2.5</Version>
+    <PackageReference Include="DevExpress.ExpressApp.Win.All">
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Persistent.BaseImpl.EF">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.2.0</Version>

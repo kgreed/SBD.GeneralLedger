@@ -3,7 +3,7 @@ using System.Linq;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using SBD.GL.Module.BusinessObjects.Accounts;
-using DevExpress.ExpressApp;
+ 
 using DevExpress.ExpressApp.Win.SystemModule;
 
 namespace SBD.GL.Module.BusinessObjects.Imports

@@ -29,7 +29,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -159,6 +159,9 @@
       <Link>ModulesVersionInfo</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="..\SBD.GL.Cli\bin\x64\Release\PreCompile\SBD.GL\Model.Cache.xafml">
+      <Link>Model.Cache.xafml</Link>
+    </None>
     <None Include="App.config" />
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -207,44 +210,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp">
+      <Version>18.2.7</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Core.All">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.EF">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotChart">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotChart.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotGrid">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.PivotGrid.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.TreeListEditors.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Validation">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Validation.Win">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Win">
-      <Version>18.2.5</Version>
+    <PackageReference Include="DevExpress.ExpressApp.Win.All">
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Persistent.BaseImpl.EF">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.2.0</Version>

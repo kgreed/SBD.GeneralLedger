@@ -68,6 +68,7 @@ namespace SBD.GL.Cli
                         Console.WriteLine("Error:");
                         Console.WriteLine(new string('=', Console.BufferWidth));
                         Console.WriteLine(e.ToString());
+                        Console.ReadLine();
                         return 1;
                     }
                     finally

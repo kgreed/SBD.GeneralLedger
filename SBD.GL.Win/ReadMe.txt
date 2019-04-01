@@ -37,3 +37,12 @@ This is an open source toolkit built above the eXpressApp Framework extending it
 and providing 50+ cutting-edge libraries containing tools and reusable modules to target numerous 
 business scenarios. The main idea behind eXpand is to offer as many features as possible to 
 developers/business users through a declarative approach (configuring files rather than writing code).
+
+
+update-package DevExpress.ExpressApp.Core.All
+update-package DevExpress.ExpressApp.PivotChart.Win
+update-package DevExpress.ExpressApp.PivotChart
+update-package DevExpress.ExpressApp.PivotGrid
+update-package DevExpress.ExpressApp.PivotGrid.Win
+update-package DevExpress.ExpressApp.ReportsV2.Win
+update-package DevExpress.ExpressApp.ReportsV2

@@ -29,6 +29,7 @@ namespace SBD.GL.Win {
             LinkNewObjectToParentImmediately = false;
             OptimizedControllersCreation = true;
             UseLightStyle = true;
+            EnableModelCache = true;
         }
         #endregion
         public GLWindowsFormsApplication() {

@@ -10,6 +10,8 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
 using System.IO;
 using DevExpress.ExpressApp.EF.Updating;
+using DevExpress.ExpressApp.Xpo.Updating;
+using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.EF;
 using SBD.GL.Module.BusinessObjects.Accounts;
 using SBD.GL.Module.BusinessObjects.Imports;
@@ -53,10 +55,10 @@ namespace SBD.GL.Module.BusinessObjects
 
         }
   
-        public DbSet<ModuleInfo> ModulesInfo { get; set; }
-        public DbSet<Analysis> Analysis { get; set; }
+        public DbSet<DevExpress.ExpressApp.EF.Updating.ModuleInfo> ModulesInfo { get; set; }
+        public DbSet<DevExpress.Persistent.BaseImpl.EF.Analysis> Analysis { get; set; }
      
-        public DbSet<ReportDataV2> ReportDataV2 { get; set; }
+        public DbSet<DevExpress.Persistent.BaseImpl.EF.ReportDataV2> ReportDataV2 { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Job> Jobs { get; set; }

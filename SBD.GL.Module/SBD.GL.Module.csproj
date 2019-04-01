@@ -92,20 +92,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp">
+      <Version>18.2.7</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Core.All">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.EF">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Validation">
-      <Version>18.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Win">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Persistent.BaseImpl.EF">
-      <Version>18.2.5</Version>
+      <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.2.0</Version>
@@ -133,23 +130,8 @@
     <Compile Include="BusinessObjects\Accounts\Account.cs" />
     <Compile Include="BusinessObjects\Accounts\IAccount.cs" />
     <Compile Include="BusinessObjects\Accounts\SimpleAccount.cs" />
-    <Compile Include="BusinessObjects\Imports\BankRuleActionInPopupController.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="BusinessObjects\Imports\BankImport.cs" />
     <Compile Include="BusinessObjects\Imports\BankImportLine.cs" />
-    <Compile Include="BusinessObjects\Imports\BankImportLinePopUpActionController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLinePopUpActionController.Designer.cs">
-      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLineMakeRuleController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportLineMakeRuleController.Designer.cs">
-      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
-    </Compile>
     <Compile Include="BusinessObjects\Imports\BankImportRule.cs" />
     <Compile Include="BusinessObjects\BasicBo.cs" />
     <Compile Include="BusinessObjects\Card.cs" />
@@ -157,12 +139,6 @@
     <Compile Include="BusinessObjects\GLCategoryEnum.cs" />
     <Compile Include="BusinessObjects\GLDbContext.cs" />
     <Compile Include="BusinessObjects\GstCategory.cs" />
-    <Compile Include="BusinessObjects\Imports\BankImportController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BusinessObjects\Imports\BankImportController.Designer.cs">
-      <DependentUpon>BankImportController.cs</DependentUpon>
-    </Compile>
     <Compile Include="BusinessObjects\Imports\CustomizeContainerActions.cs" />
     <Compile Include="BusinessObjects\Setting.cs" />
     <Compile Include="BusinessObjects\Transactions\TranHeaderController.cs">
@@ -173,7 +149,6 @@
     </Compile>
     <Compile Include="BusinessObjects\Transactions\TranHeader.cs" />
     <Compile Include="BusinessObjects\Accounts\AccountFunctions.cs" />
-    <Compile Include="BusinessObjects\Imports\BankRuleFunctions.cs" />
     <Compile Include="HandyDefaults.cs" />
     <Compile Include="HandySettings.cs" />
     <Compile Include="Controllers\EntityObject1.cs" />
@@ -224,15 +199,6 @@
     <Compile Include="SiteCache.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportController.resx">
-      <DependentUpon>BankImportController.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLinePopUpActionController.resx">
-      <DependentUpon>BankImportLinePopUpActionController.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BusinessObjects\Imports\BankImportLineMakeRuleController.resx">
-      <DependentUpon>BankImportLineMakeRuleController.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901160245272_InitialCreate.resx">
       <DependentUpon>201901160245272_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,7 +210,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\BalanceSheet\BalanceSheetReport.resx">
       <DependentUpon>BalanceSheetReport.cs</DependentUpon>
     </EmbeddedResource>
