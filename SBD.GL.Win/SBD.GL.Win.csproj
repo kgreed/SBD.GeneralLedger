@@ -42,7 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -135,12 +135,7 @@
     <Compile Include="WinApplication.Designer.cs">
       <DependentUpon>WinApplication.cs</DependentUpon>
     </Compile>
-    <Content Include="..\SBD.GL.Cli\bin\x64\Release\PreCompile\SBD.GL\ModelAssembly.dll">
-      <Link>ModelAssembly.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="sbd_Tu0_icon.ico" />
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -155,14 +150,9 @@
       <DependentUpon>WinApplication.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="..\SBD.GL.Cli\bin\x64\Release\PreCompile\SBD.GL\ModulesVersionInfo">
-      <Link>ModulesVersionInfo</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="..\SBD.GL.Cli\bin\x64\Release\PreCompile\SBD.GL\Model.Cache.xafml">
-      <Link>Model.Cache.xafml</Link>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="App.config" />
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -11,12 +11,12 @@ using SBD.GL.Module;
 using SBD.GL.Module.BusinessObjects;
 
 namespace SBD.GL.Win {
-    static class Program {
+    public static class Program {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() {
+        public static void Main() {
 #if EASYTEST
             DevExpress.ExpressApp.Win.EasyTest.EasyTestRemotingRegistration.Register();
 #endif
