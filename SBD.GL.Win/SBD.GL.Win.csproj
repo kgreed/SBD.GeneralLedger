@@ -124,6 +124,7 @@
     </Reference>
     <Reference Include="Windows">
       <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,14 @@
     <ProjectReference Include="..\SBD.GL.Module\SBD.GL.Module.csproj">
       <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
       <Name>SBD.GL.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scissors\Scissors.Xaf.CacheWarmup.Attributes\Scissors.Xaf.CacheWarmup.Attributes.csproj">
+      <Project>{54583451-483c-4fb5-8322-4c5573be283c}</Project>
+      <Name>Scissors.Xaf.CacheWarmup.Attributes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scissors\Scissors.Xaf.CacheWarmup.Generators.MsBuild\Scissors.Xaf.CacheWarmup.Generators.MsBuild.csproj">
+      <Project>{308399c7-a6b8-4f10-bcb8-9f1bfa92a96d}</Project>
+      <Name>Scissors.Xaf.CacheWarmup.Generators.MsBuild</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -242,4 +251,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <XafPreCacheGenerator>$(OutputPath)Scissors.Xaf.CacheWarmup.Generators.MsBuild.dll</XafPreCacheGenerator>
+    <XafApplicationPath>$(MSBuildThisFileDirectory)$(OutputPath)$(AssemblyName).exe</XafApplicationPath>
+  </PropertyGroup>
+  <UsingTask TaskName="Scissors.Xaf.CacheWarmup.Generators.MsBuild.XafCacheWarmupTask" AssemblyFile="$(XafPreCacheGenerator)" />
+  <Target Name="AfterBuild">
+    <XafCacheWarmupTask ApplicationPath="$(XafApplicationPath)" />
+  </Target>
 </Project>
