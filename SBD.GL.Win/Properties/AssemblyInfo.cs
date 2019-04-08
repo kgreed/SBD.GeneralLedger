@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
                                       // cause dev express looks at version  use ifdef to 
 [assembly: AssemblyFileVersion("1.0.0.1")]
 
-[assembly: XafCacheWarmup(typeof(GLWindowsFormsApplication))] 
+[assembly: XafCacheWarmup(typeof(GLWindowsFormsApplication), typeof(WarmupCacheFactory))] 

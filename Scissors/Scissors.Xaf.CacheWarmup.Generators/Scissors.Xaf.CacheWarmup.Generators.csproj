@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <AssemblyTitle>Scissors.Xaf.CacheWarmup.Generators</AssemblyTitle>
     <Product>Scissors.Xaf.CacheWarmup.Generators</Product>
     <Copyright>Copyright © Manuel Grundner 2019</Copyright>
