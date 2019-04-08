@@ -4,6 +4,7 @@
     <AssemblyTitle>Scissors.Xaf.CacheWarmup.Attributes</AssemblyTitle>
     <Product>Scissors.Xaf.CacheWarmup.Attributes</Product>
     <Copyright>Copyright © Manuel Grundner 2019</Copyright>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

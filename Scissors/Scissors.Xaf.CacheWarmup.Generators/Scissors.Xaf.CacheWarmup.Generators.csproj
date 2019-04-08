@@ -4,6 +4,7 @@
     <AssemblyTitle>Scissors.Xaf.CacheWarmup.Generators</AssemblyTitle>
     <Product>Scissors.Xaf.CacheWarmup.Generators</Product>
     <Copyright>Copyright © Manuel Grundner 2019</Copyright>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scissors.Xaf.CacheWarmup.Attributes\Scissors.Xaf.CacheWarmup.Attributes.csproj" />
