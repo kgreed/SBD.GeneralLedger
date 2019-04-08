@@ -30,7 +30,6 @@ namespace Scissors.Xaf.CacheWarmup.Generators.Cli
             }
 
             Console.WriteLine("Done");
-            Console.ReadLine();
         }
     }
 }

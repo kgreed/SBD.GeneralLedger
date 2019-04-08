@@ -20,6 +20,9 @@ namespace SBD.GL.Win
             DevExpress.Persistent.Base.PasswordCryptographer.EnableRfc2898 = true;
             DevExpress.Persistent.Base.PasswordCryptographer.SupportLegacySha512 = false;
             DevExpress.ExpressApp.Utils.ImageLoader.Instance.UseSvgImages = true;
+            DevExpress.ExpressApp.ModelCacheManager.SkipEmptyNodes = true;
+            DevExpress.ExpressApp.ModelCacheManager.UseCacheWhenDebuggerIsAttached = false;
+            DevExpress.ExpressApp.ModelCacheManager.UseMultithreadedLoading = true;
         }
 
         private void InitializeDefaults()
@@ -65,6 +68,19 @@ namespace SBD.GL.Win
         }
 
         private string FilePath => SiteCache.Instance.LocalPath;
+
+        protected override string GetDcAssemblyFilePath()
+           => Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), DcAssemblyFileName);
+
+        protected override string GetModelAssemblyFilePath()
+            => Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), ModelAssemblyFileName);
+
+        protected override string GetModelCacheFileLocationPath()
+            => Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location));
+
+        protected override string GetModulesVersionInfoFilePath()
+           => Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), ModulesVersionInfoFileName);
+
 
 
         protected override void OnCustomGetUserModelDifferencesPath(CustomGetUserModelDifferencesPathEventArgs args)

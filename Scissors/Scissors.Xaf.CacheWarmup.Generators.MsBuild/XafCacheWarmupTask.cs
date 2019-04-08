@@ -76,6 +76,7 @@ namespace Scissors.Xaf.CacheWarmup.Generators.MsBuild
                     if (process.Start())
                     {
                         process.WaitForExit(10000);
+                        return true;
                     }
                 }
             }
