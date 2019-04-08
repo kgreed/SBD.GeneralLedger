@@ -251,22 +251,10 @@
     <PackageReference Include="System.Data.SQLite">
       <Version>1.0.110</Version>
     </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.110</Version>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core.MSIL">
-      <Version>1.0.110</Version>
-    </PackageReference>
     <PackageReference Include="System.Data.SQLite.EF6">
       <Version>1.0.110</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Linq">
-      <Version>1.0.110</Version>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.x64">
-      <Version>1.0.110</Version>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.x86">
       <Version>1.0.110</Version>
     </PackageReference>
   </ItemGroup>
