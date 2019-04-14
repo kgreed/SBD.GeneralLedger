@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SBD.GL.Cli")]
+[assembly: AssemblyTitle("SBD.GL.Win10")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SBD.GL.Cli")]
+[assembly: AssemblyProduct("SBD.GL.Win10")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("31b5b5d9-6edb-44c2-bfc5-b3911f8c857d")]
+[assembly: Guid("f3ca07f8-cdc4-4c4d-93da-e20a8e4f775c")]
 
 // Version information for an assembly consists of the following four values:
 //

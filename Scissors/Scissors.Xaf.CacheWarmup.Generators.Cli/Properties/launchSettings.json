@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Scissors.Xaf.CacheWarmup.Generators.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\F\\git\\SBD.GeneralLedger\\SBD.GL.Win\\bin\\Debug\\SBD.GL.Win.exe"
+    }
+  }
+}
