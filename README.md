@@ -19,7 +19,7 @@ To resolve this
 5) Repeat step 4 , this time you can create the packages.
 6) Right Click the packages Solution and Launch the Windows App Certification Kit.
 Chances are that this will fail but that the upload to the store will work anyway.
-7) Upload to the store
+
 
 
 
