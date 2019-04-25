@@ -30,8 +30,7 @@
             this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule();
             this.pivotChartModuleBase = new DevExpress.ExpressApp.PivotChart.PivotChartModuleBase();
             this.pivotChartWindowsFormsModule = new DevExpress.ExpressApp.PivotChart.Win.PivotChartWindowsFormsModule();
-            this.pivotGridModule = new DevExpress.ExpressApp.PivotGrid.PivotGridModule();
-            this.pivotGridWindowsFormsModule = new DevExpress.ExpressApp.PivotGrid.Win.PivotGridWindowsFormsModule();
+ 
             this.reportsModuleV2 = new DevExpress.ExpressApp.ReportsV2.ReportsModuleV2();
             this.reportsWindowsFormsModuleV2 = new DevExpress.ExpressApp.ReportsV2.Win.ReportsWindowsFormsModuleV2();
             this.treeListEditorsModuleBase = new DevExpress.ExpressApp.TreeListEditors.TreeListEditorsModuleBase();
@@ -67,14 +66,14 @@
             this.Modules.Add(this.module2);
             this.Modules.Add(this.objectsModule);
             this.Modules.Add(this.pivotChartModuleBase);
-            this.Modules.Add(this.pivotGridModule);
+      
             this.Modules.Add(this.reportsModuleV2);
             this.Modules.Add(this.treeListEditorsModuleBase);
             this.Modules.Add(this.validationModule);
             this.Modules.Add(this.conditionalAppearanceModule);
             this.Modules.Add(this.module3);
             this.Modules.Add(this.pivotChartWindowsFormsModule);
-            this.Modules.Add(this.pivotGridWindowsFormsModule);
+          
             this.Modules.Add(this.reportsWindowsFormsModuleV2);
             this.Modules.Add(this.treeListEditorsWindowsFormsModule);
             this.Modules.Add(this.validationWindowsFormsModule);
@@ -95,8 +94,6 @@
         private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
         private DevExpress.ExpressApp.PivotChart.PivotChartModuleBase pivotChartModuleBase;
         private DevExpress.ExpressApp.PivotChart.Win.PivotChartWindowsFormsModule pivotChartWindowsFormsModule;
-        private DevExpress.ExpressApp.PivotGrid.PivotGridModule pivotGridModule;
-        private DevExpress.ExpressApp.PivotGrid.Win.PivotGridWindowsFormsModule pivotGridWindowsFormsModule;
         private DevExpress.ExpressApp.ReportsV2.ReportsModuleV2 reportsModuleV2;
         private DevExpress.ExpressApp.ReportsV2.Win.ReportsWindowsFormsModuleV2 reportsWindowsFormsModuleV2;
         private DevExpress.ExpressApp.TreeListEditors.TreeListEditorsModuleBase treeListEditorsModuleBase;

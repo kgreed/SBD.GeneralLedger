@@ -10,7 +10,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
 using System.IO;
 using DevExpress.ExpressApp.EF.Updating;
-using DevExpress.ExpressApp.Xpo.Updating;
+
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.EF;
 using SBD.GL.Module.BusinessObjects.Accounts;

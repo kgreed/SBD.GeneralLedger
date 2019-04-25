@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SBD.GL.Module</RootNamespace>
     <AssemblyName>SBD.GL.Module</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -122,9 +122,6 @@
     <PackageReference Include="DevExpress.ExpressApp">
       <Version>18.2.7</Version>
     </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Core.All">
-      <Version>18.2.7</Version>
-    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.EF">
       <Version>18.2.7</Version>
     </PackageReference>
@@ -205,15 +202,11 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\BalanceSheet\BalanceSheetDto.cs" />
-    <Compile Include="Reports\BalanceSheet\BalanceSheetReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Reports\BalanceSheet\BalanceSheetReport.cs" />
     <Compile Include="Reports\BalanceSheet\BalanceSheetReport.Designer.cs">
       <DependentUpon>BalanceSheetReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\PandL\PandLReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Reports\PandL\PandLReport.cs" />
     <Compile Include="Reports\PandL\PandLReport.Designer.cs">
       <DependentUpon>PandLReport.cs</DependentUpon>
     </Compile>

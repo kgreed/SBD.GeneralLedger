@@ -40,9 +40,5 @@ developers/business users through a declarative approach (configuring files rath
 
 
 update-package DevExpress.ExpressApp.Core.All
-update-package DevExpress.ExpressApp.PivotChart.Win
-update-package DevExpress.ExpressApp.PivotChart
-update-package DevExpress.ExpressApp.PivotGrid
-update-package DevExpress.ExpressApp.PivotGrid.Win
 update-package DevExpress.ExpressApp.ReportsV2.Win
 update-package DevExpress.ExpressApp.ReportsV2

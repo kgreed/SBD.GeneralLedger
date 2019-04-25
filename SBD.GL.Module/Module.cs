@@ -19,7 +19,7 @@ using SBD.GL.Module.BusinessObjects;
 using DevExpress.ExpressApp.ReportsV2;
 using SBD.GL.Module.BusinessObjects.Accounts;
 using SBD.GL.Module.Reports.PandL;
-using BalanceSheetReport = SBD.GL.Module.Reports.BalanceSheet.BalanceSheetReport;
+//using BalanceSheetReport = SBD.GL.Module.Reports.BalanceSheet.BalanceSheetReport;
 
 namespace SBD.GL.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -45,14 +45,14 @@ namespace SBD.GL.Module {
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
 
-            PredefinedReportsUpdater predefinedReportsUpdater =
-                new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
-            predefinedReportsUpdater.AddPredefinedReport<PandLReport>("P and L Report", typeof(PandLReportDto));
-            predefinedReportsUpdater.AddPredefinedReport<BalanceSheetReport>("BalanceSheet Report", typeof(BalanceSheetDto));
+            //PredefinedReportsUpdater predefinedReportsUpdater =
+            // new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
+            //  predefinedReportsUpdater.AddPredefinedReport<PandLReport>("P and L Report", typeof(PandLReportDto));
+            //    predefinedReportsUpdater.AddPredefinedReport<BalanceSheetReport>("BalanceSheet Report", typeof(BalanceSheetDto));
 
-            return new ModuleUpdater[] { updater, predefinedReportsUpdater };
+            // return new ModuleUpdater[] { updater, predefinedReportsUpdater };
+            return new ModuleUpdater[] { updater  };
 
-          
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
@@ -60,8 +60,8 @@ namespace SBD.GL.Module {
         }
         public override void Setup(ApplicationModulesManager moduleManager) {
             base.Setup(moduleManager);
-			ReportsModuleV2 reportModule = moduleManager.Modules.FindModule<ReportsModuleV2>();
-            reportModule.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
+		//	ReportsModuleV2 reportModule = moduleManager.Modules.FindModule<ReportsModuleV2>();
+         //   reportModule.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
 
           
 

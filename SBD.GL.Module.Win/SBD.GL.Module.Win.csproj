@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SBD.GL.Module.Win</RootNamespace>
     <AssemblyName>SBD.GL.Module.Win</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -234,9 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp">
-      <Version>18.2.7</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.ExpressApp.Core.All">
       <Version>18.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.EF">
