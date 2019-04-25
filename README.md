@@ -17,5 +17,9 @@ To resolve this
 3) Switch back to release mode and build.
 4) Right Click the Packages Solution -> Store -> Create Packages. This will display an error 
 5) Repeat step 4 , this time you can create the packages.
+6) Right Click the packages Solution and Launch the Windows App Certification Kit.
+Chances are that this will fail but that the upload to the store will work anyway.
+7) Upload to the store
+
 
 
